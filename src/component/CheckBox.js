@@ -1,6 +1,58 @@
 import React, { Component } from "react";
 
+const DiamondShape = [
+    {
+        name: "Round"
+    },
+    {
+        name: "Princess"
+    },
+    {
+        name: "Emerald"
+    },
+    {
+        name: "Asscher"
+    },
+    {
+        name: "Oval"
+    },
+    {
+        name: "Radient"
+    },
+    {
+        name: "Sq Radient"
+    },
+    {
+        name: "Pear"
+    },
+    {
+        name: "Heart"
+    },
+    {
+        name: "Triangle"
+    },
+    {
+        name: "Trillent"
+    },
+    {
+        name: "Marquise"
+    },
+    {
+        name: "Cushion"
+    },
+    {
+        name: "Cus Mod"
+    },
+    {
+        name: "Other"
+    }
+]
+
 class CheckBox extends Component {
+
+   
+
+
     state = {
         languages: [] 
     }
@@ -37,6 +89,17 @@ class CheckBox extends Component {
                 <input type="checkbox" name="languages" value="Mandarin" onChange={this.onChange}/>
                 <label htmlFor="language6"> Mandarin</label>
                 <br />
+                {DiamondShape.map((items, index) => <div key={index} class="cat action">
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    value={items.name}
+                                    name="languages"
+                                    onChange={(e) => this.onChange(e, index)}
+                                />
+                                <span>{items.name}</span>
+                            </label>
+                        </div>)}
                 <input type='submit' value='Submit'/>
                 </form>
             </div>
@@ -44,3 +107,6 @@ class CheckBox extends Component {
     }
 }
 export default CheckBox;
+
+
+

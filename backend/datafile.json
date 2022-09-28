@@ -1,0 +1,127 @@
+[
+  {
+    "metal": "Gold",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "GBP": { "bid": "1,459.25", "offer": "1,461.85" } }
+  },
+  {
+    "metal": "Gold",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "EUR": { "bid": "1,662.55", "offer": "1,664.65" } }
+  },
+  {
+    "metal": "Gold",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "USD": { "bid": "1,660.70", "offer": "1,662.68" } }
+  },
+  {
+    "metal": "Gold",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "AUD": { "bid": "2,485.30", "offer": "2,487.63" } }
+  },
+  {
+    "metal": "Gold",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "SGD": { "bid": "2,341.36", "offer": "2,343.62" } }
+  },
+  {
+    "metal": "Silver",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "GBP": { "bid": "16.92", "offer": "17.04" } }
+  },
+  {
+    "metal": "Silver",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "EUR": { "bid": "19.28", "offer": "19.39" } }
+  },
+  {
+    "metal": "Silver",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "USD": { "bid": "19.26", "offer": "19.34" } }
+  },
+  {
+    "metal": "Silver",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "AUD": { "bid": "28.83", "offer": "28.92" } }
+  },
+  {
+    "metal": "Silver",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "SGD": { "bid": "27.16", "offer": "27.25" } }
+  },
+  {
+    "metal": "Platinum",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "GBP": { "bid": "796.50", "offer": "799.25" } }
+  },
+  {
+    "metal": "Platinum",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "EUR": { "bid": "907.75", "offer": "910.25" } }
+  },
+  {
+    "metal": "Platinum",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "USD": { "bid": "906.95", "offer": "909.20" } }
+  },
+  {
+    "metal": "Platinum",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "AUD": { "bid": "1,357.05", "offer": "1,363.15" } }
+  },
+  {
+    "metal": "Platinum",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "SGD": { "bid": "1,277.75", "offer": "1,281.30" } }
+  },
+  {
+    "metal": "Palladium",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "GBP": { "bid": "1,860.00", "offer": "1,870.00" } }
+  },
+  {
+    "metal": "Palladium",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "EUR": { "bid": "2,114.75", "offer": "2,130.00" } }
+  },
+  {
+    "metal": "Palladium",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "USD": { "bid": "2,116.70", "offer": "2,127.50" } }
+  },
+  {
+    "metal": "Palladium",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "AUD": { "bid": "3,161.35", "offer": "3,182.70" } }
+  },
+  {
+    "metal": "Palladium",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "SGD": { "bid": "2,974.35", "offer": "3,009.00" } }
+  },
+  {
+    "metal": "Rhodium",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "GBP": { "bid": "9,227.00", "offer": "12,744.00" } }
+  },
+  {
+    "metal": "Rhodium",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "EUR": { "bid": "10,511.00", "offer": "14,518.00" } }
+  },
+  {
+    "metal": "Rhodium",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "USD": { "bid": "10,500.00", "offer": "14,500.00" } }
+  },
+  {
+    "metal": "Rhodium",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "AUD": { "bid": "15,711.00", "offer": "21,701.00" } }
+  },
+  {
+    "metal": "Rhodium",
+    "TimeStemp": "2022-09-19 16:58:28.927949",
+    "currency": { "SGD": { "bid": "14,803.00", "offer": "20,440.00" } }
+  }
+]
