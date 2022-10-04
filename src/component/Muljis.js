@@ -563,21 +563,19 @@ console.log(result,"result")
     const onSubmit = (event) => {
         event.preventDefault();
         console.log(shape);
-        console.log(carat);
-        setResult(result.shape.push(...shape), 
-        result.carat.push(...carat),
-        result.color.push(...color),
-        result.clearity.push(...clearity),
-        result.sym.push(...sym),
-        result.shortCut.push(...shortcut),
-        result.cut.push(...cut),
-        result.location.push(...location),
-        result.lab.push(...lab),
-        result.polish.push(...polish),
-        result.fluroscence.push(...fluoresence),
-        result.brands.push(...brands),
-        )
-        console.log(result, "anurag1")
+        console.log(carat); 
+        console.log(color);
+        console.log(clearity); 
+        console.log(sym);
+        console.log(shortcut);
+        console.log(cut);
+        console.log(location);
+        console.log(lab);
+        console.log(polish);
+        console.log(fluoresence);
+        console.log(brands);
+        
+        console.log(result, "new Changes")
 
         to_index()
 
