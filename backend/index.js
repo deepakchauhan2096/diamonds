@@ -41,10 +41,10 @@ const getall_data = async () => {
   }
 };
 
-app.get("/doc", cors(), async (req, res) => {
+app.get("/doc_new", cors(), async (req, res) => {
   try {
     const alldata = await pool.query(
-      "SELECT * FROM public.doc"
+      "SELECT * FROM public.doc_new"
     );
     res.json(alldata);
     all = alldata.rows;

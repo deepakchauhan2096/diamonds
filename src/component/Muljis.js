@@ -379,7 +379,7 @@ const Muljis = () => {
 
 
 
-    const [result, setResult] = useState({ carat: [], shape: [], color: [], clearity: [], sym: [], shortCut: [], cut: [], location: [], lab: [], polish: [], fluroscence : [], brands: [] })
+    // const [result, setResult] = useState({ carat: [], shape: [], color: [], clearity: [], sym: [], shortCut: [], cut: [], location: [], lab: [], polish: [], fluroscence : [], brands: [] })
     const [data, setData] = useState();
     const [hit, setHit] = useState(false);
 
@@ -388,10 +388,10 @@ const Muljis = () => {
 
     useEffect(() => {
         const alldata = () => {
-            fetch("http://localhost:4000/doc")
+            fetch("http://localhost:4000/doc_new")
                 .then((res) => res.json())
                 .then((data) => setData(data.rows));
-            console.log(data, "all data hhhhh  gggg gg ffhgg");
+            console.log(data, "all data hhhhh  gggg ");
         };
         alldata();
 
@@ -404,10 +404,10 @@ const Muljis = () => {
 
     if (hit === true) {
         const alldata = () => {
-            fetch("http://localhost:4000/doc")
+            fetch("http://localhost:4000/doc_new")
                 .then((res) => res.json())
                 .then((data) => setData(data.rows));
-            console.log(data, "all data hhhhhh sgdgg");
+            console.log(data, "all data hhhhhh sgdg ggggg");
             console.log("hit is true");
             setHit(false);
             // console.log(formValues, "formvalues");
@@ -566,23 +566,25 @@ const Muljis = () => {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        console.log(shape);
-        console.log(carat);
+        console.log(shape, carat , color )
+       
 
-        setResult(result.shape.push(...shape), 
-        result.carat.push(...carat),
-        result.color.push(...color),
-        result.clearity.push(...clearity),
-        result.sym.push(...sym),
-        result.shortCut.push(...shortcut),
-        result.cut.push(...cut),
-        result.location.push(...location),
-        result.lab.push(...lab),
-        result.polish.push(...polish),
-        result.fluroscence.push(...fluoresence),
-        result.brands.push(...brands),
-        )
-        console.log(result)
+
+
+        // setResult(result.shape.push(...shape), 
+        // result.carat.push(...carat),
+        // result.color.push(...color),
+        // result.clearity.push(...clearity),
+        // result.sym.push(...sym),
+        // result.shortCut.push(...shortcut),
+        // result.cut.push(...cut),
+        // result.location.push(...location),
+        // result.lab.push(...lab),
+        // result.polish.push(...polish),
+        // result.fluroscence.push(...fluoresence),
+        // result.brands.push(...brands),
+        // )
+        // console.log(result)
 
         // setData((prev) => {
         //     return { ...prev, carat: [...data.carat, "dfsd"] };
@@ -610,7 +612,6 @@ const Muljis = () => {
                                     <span>{items.name}</span>
                                 </label>
                             </div>)}
-
                         </div>
                     </div>
 
