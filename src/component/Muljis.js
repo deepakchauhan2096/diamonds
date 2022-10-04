@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './style.css'
 
-
-
-
-
-
 const DiamondShape = [
     {
         name: "Round"
@@ -370,28 +365,16 @@ const Muljis = () => {
     const [polish, setPolish] = useState([])
     const [fluoresence, setFluroscence] = useState([])
     const [brands, setBrands] = useState([])
-
-
-
-
-
-
-
-
-
-    // const [result, setResult] = useState({ carat: [], shape: [], color: [], clearity: [], sym: [], shortCut: [], cut: [], location: [], lab: [], polish: [], fluroscence : [], brands: [] })
+    const [result, setResult] = useState({ carat: [], shape: [], color: [], clearity: [], sym: [], shortCut: [], cut: [], location: [], lab: [], polish: [], fluroscence : [], brands: [] })
     const [data, setData] = useState();
     const [hit, setHit] = useState(false);
 
-
-
-
     useEffect(() => {
         const alldata = () => {
-            fetch("http://localhost:4000/doc_new")
+            fetch("http://localhost:4000/selected")
                 .then((res) => res.json())
                 .then((data) => setData(data.rows));
-            console.log(data, "all data hhhhh  gggg ");
+            console.log(data, "all data of the selected");
         };
         alldata();
 
@@ -558,33 +541,49 @@ const Muljis = () => {
         }
     }
 
+// sending selected data to backend
+const to_index = ()=>{
+let tempshape = result
+console.log(result,"result")
+  const response = fetch("http://localhost:4000/selected",{
+    method: "POST",
+    headers:{"Content-Type":"application/json",},
+    body: JSON.stringify(tempshape)
+  }).then((res)=>{
 
+      return response.text()
+  }).then((res)=>{
+    console.log("res : ",res)
+  })
 
-
-    // console.log(shape)
-    // console.log(carat);
+//   console.log(body,"body")
+    
+}
 
     const onSubmit = (event) => {
         event.preventDefault();
-        console.log(shape, carat , color )
+        console.log(shape);
+        console.log(carat);
+        setResult(result.shape.push(...shape), 
+        result.carat.push(...carat),
+        result.color.push(...color),
+        result.clearity.push(...clearity),
+        result.sym.push(...sym),
+        result.shortCut.push(...shortcut),
+        result.cut.push(...cut),
+        result.location.push(...location),
+        result.lab.push(...lab),
+        result.polish.push(...polish),
+        result.fluroscence.push(...fluoresence),
+        result.brands.push(...brands),
+        )
+        console.log(result, "anurag1")
+
+        to_index()
+
+      
        
-
-
-
-        // setResult(result.shape.push(...shape), 
-        // result.carat.push(...carat),
-        // result.color.push(...color),
-        // result.clearity.push(...clearity),
-        // result.sym.push(...sym),
-        // result.shortCut.push(...shortcut),
-        // result.cut.push(...cut),
-        // result.location.push(...location),
-        // result.lab.push(...lab),
-        // result.polish.push(...polish),
-        // result.fluroscence.push(...fluoresence),
-        // result.brands.push(...brands),
-        // )
-        // console.log(result)
+       
 
         // setData((prev) => {
         //     return { ...prev, carat: [...data.carat, "dfsd"] };
@@ -598,10 +597,10 @@ const Muljis = () => {
             <div className="container-fluid">
                 <form onSubmit={onSubmit}>
                     <div className="row">
-                        <div class="container">
+                        <div className="container">
                             <h5 className='p-2'>Shape</h5>
 
-                            {DiamondShape.map((items, index) => <div key={index} class="cat action">
+                            {DiamondShape.map((items, index) => <div key={index} className="cat action">
                                 <label>
                                     <input
                                         type="checkbox"
@@ -616,10 +615,10 @@ const Muljis = () => {
                     </div>
 
                     <div className="row">
-                        <div class="container">
+                        <div className="container">
                             <h5 className='p-2'>Carat</h5>
 
-                            {DiamondCarat.map((items, index) => <div key={index} class="cat action">
+                            {DiamondCarat.map((items, index) => <div key={index} className="cat action">
                                 <label>
                                     <input
                                         type="checkbox"
@@ -635,10 +634,10 @@ const Muljis = () => {
                     </div>
 
                     <div className="row">
-                        <div class="container">
+                        <div className="container">
                             <h5 className='p-2'>Color</h5>
 
-                            {DiamondColor.map((items, index) => <div key={index} class="cat action">
+                            {DiamondColor.map((items, index) => <div key={index} className="cat action">
                                 <label className='color-width'>
                                     <input
                                         type="checkbox"
@@ -654,11 +653,11 @@ const Muljis = () => {
                     </div>
 
                     <div className="row">
-                        <div class="container">
+                        <div className="container">
 
                             <h5 className='p-2'>Clearity</h5>
 
-                            {DiamondClearity.map((items, index) => <div key={index} class="cat action">
+                            {DiamondClearity.map((items, index) => <div key={index} className="cat action">
                                 <label className='clearity-width'>
                                     <input
                                         type="checkbox"
@@ -679,9 +678,9 @@ const Muljis = () => {
                         <div className="col-lg-6">
 
                             <div className="row">
-                                <div class="container">
+                                <div className="container">
                                     <h5 className='p-2'>Symmetry</h5>
-                                    {DiamondSymmetry.map((items, index) => <div key={index} class="cat action">
+                                    {DiamondSymmetry.map((items, index) => <div key={index} className="cat action">
                                         <label>
                                             <input
                                                 type="checkbox"
@@ -696,9 +695,9 @@ const Muljis = () => {
                             </div>
 
                             <div className="row">
-                                <div class="container">
+                                <div className="container">
                                     <h5 className='p-2'>Shortcut</h5>
-                                    {DiamondShortCut.map((items, index) => <div key={index} class="cat action">
+                                    {DiamondShortCut.map((items, index) => <div key={index} className="cat action">
                                         <label>
                                             <input
                                                 type="checkbox"
@@ -714,9 +713,9 @@ const Muljis = () => {
 
 
                             <div className="row">
-                                <div class="container">
+                                <div className="container">
                                     <h5 className='p-2'>Cut</h5>
-                                    {DiamondCut.map((items, index) => <div key={index} class="cat action">
+                                    {DiamondCut.map((items, index) => <div key={index} className="cat action">
                                         <label>
                                             <input
                                                 type="checkbox"
@@ -731,9 +730,9 @@ const Muljis = () => {
                             </div>
 
                             <div className="row">
-                                <div class="container">
+                                <div className="container">
                                     <h5 className='p-2'>Location</h5>
-                                    {DiamondLocation.map((items, index) => <div key={index} class="cat action">
+                                    {DiamondLocation.map((items, index) => <div key={index} className="cat action">
                                         <label>
                                             <input
                                                 type="checkbox"
@@ -750,9 +749,9 @@ const Muljis = () => {
 
                         <div className="col-lg-6">
                             <div className="row">
-                                <div class="container">
+                                <div className="container">
                                     <h5 className='p-2'>Lab</h5>
-                                    {DiamondLab.map((items, index) => <div key={index} class="cat action">
+                                    {DiamondLab.map((items, index) => <div key={index} className="cat action">
                                         <label>
                                         <input
                                                 type="checkbox"
@@ -767,9 +766,9 @@ const Muljis = () => {
                             </div>
 
                             <div className="row">
-                                <div class="container">
+                                <div className="container">
                                     <h5 className='p-2'>Polish</h5>
-                                    {DiamondPolish.map((items, index) => <div key={index} class="cat action">
+                                    {DiamondPolish.map((items, index) => <div key={index} className="cat action">
                                         <label>
                                         <input
                                                 type="checkbox"
@@ -783,9 +782,9 @@ const Muljis = () => {
                             </div>
 
                             <div className="row">
-                                <div class="container">
+                                <div className="container">
                                     <h5 className='p-2'>Fluoresence</h5>
-                                    {DiamondFluorescence.map((items, index) => <div key={index} class="cat action">
+                                    {DiamondFluorescence.map((items, index) => <div key={index} className="cat action">
                                         <label>
                                         <input
                                                 type="checkbox"
@@ -800,9 +799,9 @@ const Muljis = () => {
                             </div>
 
                             <div className="row">
-                                <div class="container">
+                                <div className="container">
                                     <h5 className='p-2'>Brands</h5>
-                                    {DiamondBrands.map((items, index) => <div key={index} class="cat action">
+                                    {DiamondBrands.map((items, index) => <div key={index} className="cat action">
                                         <label>
                                         <input
                                                 type="checkbox"
@@ -818,9 +817,12 @@ const Muljis = () => {
 
                         </div>
                     </div>
-                    <input type='submit' value='Submit' />
+                    {/* <input type='submit' value='Submit' /> */}
+                    <button>Submit</button>
+                    <button onClick={to_index}> hit api </button>
                 </form>
             </div>
+            
         </>
     )
 }
