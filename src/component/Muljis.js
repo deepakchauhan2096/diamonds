@@ -3,49 +3,49 @@ import './style.css'
 
 const DiamondShape = [
     {
-        name: "Round"
+        name: "ROUND"
     },
     {
-        name: "Princess"
+        name: "PRINCESS"
     },
     {
-        name: "Emerald"
+        name: "EMERALD"
     },
     {
-        name: "Asscher"
+        name: "ASSCHER"
     },
     {
-        name: "Oval"
+        name: "OVAL"
     },
     {
-        name: "Radient"
+        name: "RADIENT"
     },
     {
-        name: "Sq Radient"
+        name: "SQ RADIENT"
     },
     {
-        name: "Pear"
+        name: "PEAR"
     },
     {
-        name: "Heart"
+        name: "HEART"
     },
     {
-        name: "Triangle"
+        name: "TRIANGLE"
     },
     {
-        name: "Trillent"
+        name: "TRILLENT"
     },
     {
-        name: "Marquise"
+        name: "MARQUISE"
     },
     {
-        name: "Cushion"
+        name: "CUSHION"
     },
     {
-        name: "Cus Mod"
+        name: "CUS MOD"
     },
     {
-        name: "Other"
+        name: "OTHER"
     }
 ]
 
@@ -132,23 +132,41 @@ const DiamondColor = [
         name: "N"
     },
     {
-        name: "O-P"
+        name: "O"
     },
     {
-        name: "Q-R"
+        name: "P"
     },
     {
-        name: "S-T"
+        name: "Q"
     },
     {
-        name: "U-V"
-    }
+        name: "R"
+    },
+    {
+        name: "S"
+    },
+    {
+        name: "T"
+    },
+    {
+        name: "U"
+    },
+    {
+        name: "V"
+    },
     ,
     {
-        name: "W-X"
+        name: "W"
     },
     {
-        name: "Y-Z"
+        name: "X"
+    },
+    {
+        name: "Y"
+    },
+    {
+        name: "Z"
     },
 
 ]
@@ -185,20 +203,20 @@ const DiamondClearity = [
         name: "S13"
     },
     {
-        name: "11"
+        name: "I1"
     },
     {
-        name: "12"
+        name: "I2"
     },
     {
-        name: "13"
+        name: "I3"
     }
 
 ]
 
 const DiamondShortCut = [
     {
-        name: "3ex"
+        name: "3EX"
     },
     {
         name: "3EX-NON"
@@ -213,40 +231,51 @@ const DiamondShortCut = [
 
 const DiamondCut = [
     {
-        name: "Excellent"
+        name: "Excellent",
+        title:"EX"
     },
     {
-        name: "Ideal"
+        name: "Ideal",
+        title:"I"
     },
     {
-        name: "Very Good"
+        name: "Very Good",
+        title:"VG"
     },
     {
-        name: "Good"
+        name: "Good",
+        title:"GD"
     },
     {
-        name: "Fair"
+        name: "Fair",
+        title:"F"
     },
     {
-        name: "Poor"
+        name: "Poor",
+        title:"P"
     }
 ]
 
 const DiamondSymmetry = [
     {
-        name: "Ideal"
+        name: "IDEAL",
+        title:"I"
     },
     {
-        name: "Very Good"
+        name: "VERY GOOD",
+        title:"VG"
     },
     {
-        name: "Good"
+        name: "GOOD",
+        title:"GD"
     },
     {
-        name: "Fair"
+        name: "FAIR",
+        title:"F"
     },
     {
-        name: "Poor"
+        name: "POOR",
+        title:"P"
     }
 ]
 
@@ -293,46 +322,59 @@ const DiamondLab = [
 
 const DiamondPolish = [
     {
-        name: "Excellent"
+        name: "Excellent",
+        title:"EX"
     },
     {
-        name: "Ideal"
+        name: "Ideal",
+        title:"I"
     },
     {
-        name: "Very Good"
+        name: "Very Good",
+        title:"VG"
     },
     {
-        name: "Good"
+        name: "Good",
+        title:"GD"
     },
     {
-        name: "Fair"
+        name: "Fair",
+        title:"F"
     },
     {
-        name: "Poor"
+        name: "Poor",
+        title:"P"
     }
 ]
 
 const DiamondFluorescence = [
     {
-        name: "None"
+        name: "None",
+        title:"NON"
     },
     {
-        name: "V-Slight"
+        name: "V-Slight",
+        title:"VST"
     },
     {
-        name: "Faint"
+        name: "Faint",
+        title:"FNT"
     },
     {
-        name: "Slight"
+        name: "Slight",
+        title:"SLT"
     },
     {
-        name: "Mediunm"
+        name: "Mediunm",
+        title:"MED"
     },
     {
-        name: "Strong"
+        name: "Strong",
+        title:"STG"
     },
     {
-        name: "V-Strong"
+        name: "V-Strong",
+        title:"VSTG"
     }
 ]
 
@@ -682,7 +724,7 @@ console.log(result,"result")
                                         <label>
                                             <input
                                                 type="checkbox"
-                                                value={items.name}
+                                                value={items.title}
                                                 name="symmetry"
                                                 onChange={(e) => HandleSym(e, index)}
                                             />
@@ -717,7 +759,7 @@ console.log(result,"result")
                                         <label>
                                             <input
                                                 type="checkbox"
-                                                value={items.name}
+                                                value={items.title}
                                                 name="Cut"
                                                 onChange={(e) => HandleCut(e, index)}
                                             />
@@ -770,7 +812,7 @@ console.log(result,"result")
                                         <label>
                                         <input
                                                 type="checkbox"
-                                                value={items.name}
+                                                value={items.title}
                                                 name="Polish"
                                                 onChange={(e) => HandlePolish(e, index)}
                                             /><span >{items.name}</span>
@@ -786,7 +828,7 @@ console.log(result,"result")
                                         <label>
                                         <input
                                                 type="checkbox"
-                                                value={items.name}
+                                                value={items.title}
                                                 name="Flurosence"
                                                 onChange={(e) => HandleFluo(e, index)}
                                             />
