@@ -42,7 +42,7 @@ const DiamondShape = [
         name: "CUSHION"
     },
     {
-        name:"CUS MOD"
+        name: "CUS MOD"
     },
     {
         name: "OTHER"
@@ -140,7 +140,7 @@ const DiamondColor = [
     {
         name: "QR"
     },
-   
+
     {
         name: "S"
     },
@@ -153,7 +153,7 @@ const DiamondColor = [
     {
         name: "V"
     },
-    ,
+    
     {
         name: "W"
     },
@@ -165,7 +165,7 @@ const DiamondColor = [
     },
     {
         name: "Z"
-    },
+    }
 
 ]
 
@@ -192,7 +192,7 @@ const DiamondClearity = [
         name: "VS3"
     },
     {
-        name: "S11"
+        name: "SI1"
     },
     {
         name: "S12"
@@ -230,50 +230,50 @@ const DiamondShortCut = [
 const DiamondCut = [
     {
         name: "Excellent",
-        title:"EX"
+        title: "EX"
     },
     {
         name: "Ideal",
-        title:"I"
+        title: "I"
     },
     {
         name: "Very Good",
-        title:"VG"
+        title: "VG"
     },
     {
         name: "Good",
-        title:"GD"
+        title: "GD"
     },
     {
         name: "Fair",
-        title:"F"
+        title: "F"
     },
     {
         name: "Poor",
-        title:"P"
+        title: "P"
     }
 ]
 
 const DiamondSymmetry = [
     {
         name: "IDEAL",
-        title:"I"
+        title: "I"
     },
     {
         name: "VERY GOOD",
-        title:"VG"
+        title: "VG"
     },
     {
         name: "GOOD",
-        title:"GD"
+        title: "GD"
     },
     {
         name: "FAIR",
-        title:"F"
+        title: "F"
     },
     {
         name: "POOR",
-        title:"P"
+        title: "P"
     }
 ]
 
@@ -321,58 +321,58 @@ const DiamondLab = [
 const DiamondPolish = [
     {
         name: "Excellent",
-        title:"EX"
+        title: "EX"
     },
     {
         name: "Ideal",
-        title:"I"
+        title: "I"
     },
     {
         name: "Very Good",
-        title:"VG"
+        title: "VG"
     },
     {
         name: "Good",
-        title:"GD"
+        title: "GD"
     },
     {
         name: "Fair",
-        title:"F"
+        title: "F"
     },
     {
         name: "Poor",
-        title:"P"
+        title: "P"
     }
 ]
 
 const DiamondFluorescence = [
     {
         name: "None",
-        title:"NON"
+        title: "NON"
     },
     {
         name: "V-Slight",
-        title:"VST"
+        title: "VST"
     },
     {
         name: "Faint",
-        title:"FNT"
+        title: "FNT"
     },
     {
         name: "Slight",
-        title:"SLT"
+        title: "SLT"
     },
     {
         name: "Mediunm",
-        title:"MED"
+        title: "MED"
     },
     {
         name: "Strong",
-        title:"STG"
+        title: "STG"
     },
     {
         name: "V-Strong",
-        title:"VSTG"
+        title: "VSTG"
     }
 ]
 
@@ -405,7 +405,7 @@ const Muljis = () => {
     const [polish, setPolish] = useState([])
     const [fluoresence, setFluroscence] = useState([])
     const [brands, setBrands] = useState([])
-    const [result, setResult] = useState({ carat: [], shape: [], color: [], clearity: [], sym: [], shortCut: [], cut: [], location: [], lab: [], polish: [], fluroscence : [], brands: [] })
+    const [result, setResult] = useState({ carat: [], shape: [], color: [], clearity: [], sym: [], shortCut: [], cut: [], location: [], lab: [], polish: [], fluroscence: [], brands: [] })
     const [data, setData] = useState();
     const [hit, setHit] = useState(false);
 
@@ -423,11 +423,11 @@ const Muljis = () => {
         }, 3000000);
 
         return () => clearInterval(interval);
-    }, []);
+    },[data]);
 
     if (hit === true) {
         const alldata = () => {
-            fetch("http://localhost:4000/doc_new")
+            fetch("http://localhost:4000/selected")
                 .then((res) => res.json())
                 .then((data) => setData(data.rows));
             console.log(data, "all data hhhhhh sgdg ggggg");
@@ -536,7 +536,7 @@ const Muljis = () => {
         }
     }
 
-    
+
     function HandleLab(e) {
         const isChecked = e.target.checked;
         if (isChecked) {
@@ -581,49 +581,49 @@ const Muljis = () => {
         }
     }
 
-// sending selected data to backend
-const to_index = ()=>{
-let tempshape = result
-console.log(result,"result")
-  const response = fetch("http://localhost:4000/selected",{
-    method: "POST",
-    headers:{"Content-Type":"application/json",},
-    body: JSON.stringify(tempshape)
-  }).then((res)=>{
+    // sending selected data to backend
+    const to_index = () => {
+        let tempshape = result
+        console.log(result, "result")
+        const response = fetch("http://localhost:4000/selected", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", },
+            body: JSON.stringify(tempshape)
+        }).then((res) => {
 
-      return response.text()
-  }).then((res)=>{
-    console.log("res : ",res)
-  })
+            return response.text()
+        }).then((res) => {
+            console.log("res : ", res)
+        })
 
-//   console.log(body,"body")
-    
-}
+        //   console.log(body,"body")
+
+    }
 
     const onSubmit = (event) => {
         event.preventDefault();
         console.log(shape);
         console.log(carat);
-        setResult(result.shape.push(...shape), 
-        result.carat.push(...carat),
-        result.color.push(...color),
-        result.clearity.push(...clearity),
-        result.sym.push(...sym),
-        result.shortCut.push(...shortcut),
-        result.cut.push(...cut),
-        result.location.push(...location),
-        result.lab.push(...lab),
-        result.polish.push(...polish),
-        result.fluroscence.push(...fluoresence),
-        result.brands.push(...brands),
+        setResult(result.shape.push(...shape),
+            result.carat.push(...carat),
+            result.color.push(...color),
+            result.clearity.push(...clearity),
+            result.sym.push(...sym),
+            result.shortCut.push(...shortcut),
+            result.cut.push(...cut),
+            result.location.push(...location),
+            result.lab.push(...lab),
+            result.polish.push(...polish),
+            result.fluroscence.push(...fluoresence),
+            result.brands.push(...brands),
         )
         console.log(result, "anurag1")
 
         to_index()
 
-      
-       
-       
+
+
+
 
         // setData((prev) => {
         //     return { ...prev, carat: [...data.carat, "dfsd"] };
@@ -793,7 +793,7 @@ console.log(result,"result")
                                     <h5 className='p-2'>Lab</h5>
                                     {DiamondLab.map((items, index) => <div key={index} className="cat action">
                                         <label>
-                                        <input
+                                            <input
                                                 type="checkbox"
                                                 value={items.name}
                                                 name="Lab"
@@ -810,7 +810,7 @@ console.log(result,"result")
                                     <h5 className='p-2'>Polish</h5>
                                     {DiamondPolish.map((items, index) => <div key={index} className="cat action">
                                         <label>
-                                        <input
+                                            <input
                                                 type="checkbox"
                                                 value={items.title}
                                                 name="Polish"
@@ -826,7 +826,7 @@ console.log(result,"result")
                                     <h5 className='p-2'>Fluoresence</h5>
                                     {DiamondFluorescence.map((items, index) => <div key={index} className="cat action">
                                         <label>
-                                        <input
+                                            <input
                                                 type="checkbox"
                                                 value={items.title}
                                                 name="Flurosence"
@@ -843,7 +843,7 @@ console.log(result,"result")
                                     <h5 className='p-2'>Brands</h5>
                                     {DiamondBrands.map((items, index) => <div key={index} className="cat action">
                                         <label>
-                                        <input
+                                            <input
                                                 type="checkbox"
                                                 value={items.name}
                                                 name="Brands"
@@ -862,7 +862,7 @@ console.log(result,"result")
                     <button onClick={to_index}> hit api </button>
                 </form>
             </div>
-            
+
         </>
     )
 }

@@ -54,62 +54,92 @@ app.post("/selected", cors(), (req, res) => {
     const data_doc = pool.query('SELECT * FROM doc_new')
       .then((data_doc) => {
         let linkbbpdata = data_doc.rows;
-        
+        // console.log(linkbbpdata, "All Data")
         // ......filterby Shape 
         let fitlerByShape = linkbbpdata.filter((e) => data.shape.includes(e.shape))
 
         // console.log("fileterbyShape:",fitlerByShape)
         // console.log("lengthOfShape:",fitlerByShape.length)
-        res.json(fitlerByShape);
+        // res.json(fitlerByShape);
 
 
         // ......filterby Color
         let fitlerByColor = fitlerByShape.filter((e) => data.color.includes(e.color))
+
         // console.log("fitlerByColor:", fitlerByColor)
         // console.log("lengthOfColor =>", fitlerByColor.length)
-        res.json(fitlerByColor);
-
+        // res.json(fitlerByColor);
 
         // ......filterby clearity
 
-        let fitlerByClearity = fitlerByShape.filter((e) => data.clearity.includes(e.clearity))
+        let fitlerByClearity = fitlerByColor.filter((e) => data.clearity.includes(e.clarity))
 
         // console.log("fitlerByClearity =>", fitlerByClearity)
         // console.log("lengthOfClearity =>", fitlerByClearity.length)
-        res.json(fitlerByClearity);
+        // res.json(fitlerByClearity);
 
         // ......filterby symmetry
 
         let filterBySymmetry = fitlerByClearity.filter((e) => data.sym.includes(e.sym));
 
+        // console.log("filterBySymmetry:", filterBySymmetry)
+        // console.log("lengthOfSymmetry =>", filterBySymmetry.length)
 
-        console.log("filterBySymmetry:", filterBySymmetry)
-        console.log("lengthOfSymmetry =>", filterBySymmetry)
+        // res.json(filterBySymmetry);
 
-        res.json(filterBySymmetry);
-        // ......filterby shortCut
-
-
+        // linkbbpdata
         // ......filterby Cut
-
-
+        let filterByCut = filterBySymmetry.filter((e) => data.cut.includes(e.cut));
+        // console.log("filterByshortCut:", filterByCut);
+        // console.log("lenghtOf_shortCut:", filterByCut.length);
+        // res.json(filterByCut);
 
         // ......filterby Location
 
-
+        let filterByLocation = filterByCut.filter((e) => data.location.includes(e.country));
+        // console.log("filterByshortCut:", filterByLocation);
+        // console.log("lenghtOf_shortCut:", filterByLocation.length);
+        // res.json(filterByLocation);
 
         // ......filterby Lab
 
-
+        let filterByLab = filterByLocation.filter((e) => data.lab.includes(e.lab));
+        // console.log("filterByLab:", filterByLab);
+        // console.log("lenghtOf_lab:", filterByLab.length);
+        // res.json(filterByLab);
 
         // ......filterby Polish
 
+        let filterByPolish = filterByLab.filter((e) => data.polish.includes(e.pol));
+        // console.log("filterByPolish:", filterByPolish);
+        // console.log("LENGTH_OF_Polish:", filterByPolish.length);
+        // res.json(filterByPolish);
 
 
         // ......filterby fluroscence
 
+        let filterByFluroscence = filterByPolish.filter((e) => data.fluroscence.includes(e.flo));
+        // console.log("filterByFluroscence:", filterByFluroscence);
+        // console.log("LENGTH_OF_Fluroscence:", filterByFluroscence.length);
+        // res.json(filterByFluroscence);
 
         // ......filterby brands
+
+        // let filterByBrands = filterByFluroscence.filter((e) => data.sym.includes(e.sym));
+        // console.log("filterByFluroscence:", filterByBrands);
+        // console.log("LENGTH_OF_Fluroscence:", filterByBrands.length);
+        // res.json(filterByBrands);
+
+
+
+        // ......filterby shortCut
+
+        // let filterByshortCut = filterBySymmetry.filter((e) => data.shortCut.includes(e.shortCut));
+        // // let filterByshortCut = linkbbpdata.filter((e) => data.shortCut.includes(e.shortCut));
+        // console.log("filterByshortCut:",filterByshortCut);
+        // console.log("lenghtOf_shortCut:",filterByshortCut.length);
+        // res.json(filterByshortCut);
+
 
 
 
