@@ -3,49 +3,49 @@ import './style.css'
 
 const DiamondShape = [
     {
-        name: "Round"
+        name: "ROUND"
     },
     {
-        name: "Princess"
+        name: "PRINCESS"
     },
     {
-        name: "Emerald"
+        name: "EMERALD"
     },
     {
-        name: "Asscher"
+        name: "ASSCHER"
     },
     {
-        name: "Oval"
+        name: "OVAL"
     },
     {
-        name: "Radient"
+        name: "RADIENT"
     },
     {
-        name: "Sq Radient"
+        name: "SQ RADIENT"
     },
     {
-        name: "Pear"
+        name: "PEAR"
     },
     {
-        name: "Heart"
+        name: "HEART"
     },
     {
-        name: "Triangle"
+        name: "TRIANGLE"
     },
     {
-        name: "Trillent"
+        name: "TRILLENT"
     },
     {
-        name: "Marquise"
+        name: "MARQUISE"
     },
     {
-        name: "Cushion"
+        name: "CUSHION"
     },
     {
-        name: "Cus Mod"
+        name:"CUS MOD"
     },
     {
-        name: "Other"
+        name: "OTHER"
     }
 ]
 
@@ -491,7 +491,7 @@ const Muljis = () => {
             setLocation([...location, e.target.value])
         } else {
             const index = location.indexOf(e.target.value);
-            cut.splice(index, 1);
+            location.splice(index, 1);
             setLocation(location);
         }
     }
@@ -503,7 +503,7 @@ const Muljis = () => {
             setLab([...lab, e.target.value])
         } else {
             const index = lab.indexOf(e.target.value);
-            cut.splice(index, 1);
+            lab.splice(index, 1);
             setLab(lab);
         }
     }
@@ -514,7 +514,7 @@ const Muljis = () => {
             setPolish([...polish, e.target.value])
         } else {
             const index = polish.indexOf(e.target.value);
-            cut.splice(index, 1);
+            polish.splice(index, 1);
             setPolish(polish);
         }
     }
@@ -525,7 +525,7 @@ const Muljis = () => {
             setFluroscence([...fluoresence, e.target.value])
         } else {
             const index = fluoresence.indexOf(e.target.value);
-            cut.splice(index, 1);
+            fluoresence.splice(index, 1);
             setFluroscence(fluoresence);
         }
     }
@@ -536,7 +536,7 @@ const Muljis = () => {
             setBrands([...brands, e.target.value])
         } else {
             const index = brands.indexOf(e.target.value);
-            cut.splice(index, 1);
+            brands.splice(index, 1);
             setBrands(brands);
         }
     }
@@ -563,19 +563,21 @@ console.log(result,"result")
     const onSubmit = (event) => {
         event.preventDefault();
         console.log(shape);
-        console.log(carat); 
-        console.log(color);
-        console.log(clearity); 
-        console.log(sym);
-        console.log(shortcut);
-        console.log(cut);
-        console.log(location);
-        console.log(lab);
-        console.log(polish);
-        console.log(fluoresence);
-        console.log(brands);
-        
-        console.log(result, "new Changes")
+        console.log(carat);
+        setResult(result.shape.push(...shape), 
+        result.carat.push(...carat),
+        result.color.push(...color),
+        result.clearity.push(...clearity),
+        result.sym.push(...sym),
+        result.shortCut.push(...shortcut),
+        result.cut.push(...cut),
+        result.location.push(...location),
+        result.lab.push(...lab),
+        result.polish.push(...polish),
+        result.fluroscence.push(...fluoresence),
+        result.brands.push(...brands),
+        )
+        console.log(result, "anurag1")
 
         to_index()
 
