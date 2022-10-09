@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import './style.css'
+import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom"
+
 
 const DiamondShape = [
     {
@@ -153,7 +157,7 @@ const DiamondColor = [
     {
         name: "V"
     },
-    
+
     {
         name: "W"
     },
@@ -392,6 +396,7 @@ const DiamondBrands = [
 
 
 const Muljis = () => {
+    const navigation = useNavigate();
 
     const [shape, setShape] = useState([])
     const [carat, setCarat] = useState([])
@@ -405,47 +410,47 @@ const Muljis = () => {
     const [polish, setPolish] = useState([])
     const [fluoresence, setFluroscence] = useState([])
     const [brands, setBrands] = useState([])
-    const [result, setResult] = useState({ carat: [], shape: [], color: [], clearity: [], sym: [], shortCut: [], cut: [], location: [], lab: [], polish: [], fluroscence: [], brands: [] })
+    // const [result, setResult] = useState({ carat: [], shape: [], color: [], clearity: [], sym: [], shortCut: [], cut: [], location: [], lab: [], polish: [], fluroscence: [], brands: [] })
     const [data, setData] = useState();
-    const [hit, setHit] = useState(false);
+    // const [hit, setHit] = useState(false);
 
-    useEffect(() => {
-        const alldata = () => {
-            fetch("http://localhost:4000/selected")
-                .then((res) => res.json())
-                .then((data) => setData(data.rows));
-            console.log(data, "all data of the selected");
-        };
-        alldata();
+    // useEffect(() => {
+    //     const alldata = () => {
+    //         fetch("http://localhost:4000/selected")
+    //             .then((res) => res.json())
+    //             .then((data) => setData(data.rows));
+    //         console.log(data, "all data of the selected");
+    //     };
+    //     alldata();
 
-        const interval = setInterval(() => {
-            setHit(true);
-        }, 3000000);
+    //     const interval = setInterval(() => {
+    //         setHit(true);
+    //     }, 3000000);
 
-        return () => clearInterval(interval);
-    },[data]);
+    //     return () => clearInterval(interval);
+    // },[data]);
 
-    if (hit === true) {
-        const alldata = () => {
-            fetch("http://localhost:4000/selected")
-                .then((res) => res.json())
-                .then((data) => setData(data.rows));
-            console.log(data, "all data hhhhhh sgdg ggggg");
-            console.log("hit is true");
-            setHit(false);
-            // console.log(formValues, "formvalues");
-            // alert(" 😃 Page refresh complete.  ");
-        };
+    // if (hit === true) {
+    //     const alldata = () => {
+    //         fetch("http://localhost:4000/selected")
+    //             .then((res) => res.json())
+    //             .then((data) => setData(data.rows));
+    //         console.log(data, "all data hhhhhh sgdg ggggg");
+    //         console.log("hit is true");
+    //         setHit(false);
+    //         // console.log(formValues, "formvalues");
+    //         // alert(" 😃 Page refresh complete.  ");
+    //     };
 
-        alldata();
-    } else {
-        console.log("hit is false");
-    }
-
-
+    //     alldata();
+    // } else {
+    //     console.log("hit is false");
+    // }
 
 
-    function HandleShape(e, index) {
+
+
+    function HandleShape(e) {
         const isChecked = e.target.checked;
         if (isChecked) {
             setShape([...shape, e.target.value])
@@ -582,47 +587,105 @@ const Muljis = () => {
     }
 
     // sending selected data to backend
-    const to_index = () => {
-        let tempshape = result
-        console.log(result, "result")
-        const response = fetch("http://localhost:4000/selected", {
+    // const to_index = () => {
+    //     let diamond_result = result
+    //     // console.log(result, "result")
+    //     const response = fetch("http://localhost:4000/selected", {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/json", },
+    //         body: JSON.stringify(diamond_result)
+    //     }).then((res) => {
+    //         return response.text(),
+    //         console.log("res : ", res)
+    //     }).then((res) => {
+    //         console.log("res : ", res)
+    //     })
+
+    //     //   console.log(body,"body")
+
+    // }
+
+
+    const to_index = async () => {
+
+        const config = {
             method: "POST",
             headers: { "Content-Type": "application/json", },
-            body: JSON.stringify(tempshape)
-        }).then((res) => {
+            body: JSON.stringify({
+                shape,
+                carat,
+                color,
+                clearity,
+                sym,
+                shortcut,
+                cut,
+                location,
+                lab,
+                polish,
+                fluoresence,
+                brands,
+            })
+        }
 
-            return response.text()
-        }).then((res) => {
-            console.log("res : ", res)
-        })
+        try {
 
-        //   console.log(body,"body")
+            console.log("upload started");
+            await axios.post('http://localhost:4000/selected', {
+
+                shape,
+                carat,
+                color,
+                clearity,
+                sym,
+                shortcut,
+                cut,
+                location,
+                lab,
+                polish,
+                fluoresence,
+                brands,
+
+            }, config).then((res) => {
+
+                console.log(res, "hssggsgg");
+                setData(res)
+
+            }).catch((err) => {
+
+                console.log("Error", err);
+
+            })
+
+
+        } catch (err) {
+            alert("some error occured")
+        }
+
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     const onSubmit = (event) => {
         event.preventDefault();
         console.log(shape);
         console.log(carat);
-        setResult(result.shape.push(...shape),
-            result.carat.push(...carat),
-            result.color.push(...color),
-            result.clearity.push(...clearity),
-            result.sym.push(...sym),
-            result.shortCut.push(...shortcut),
-            result.cut.push(...cut),
-            result.location.push(...location),
-            result.lab.push(...lab),
-            result.polish.push(...polish),
-            result.fluroscence.push(...fluoresence),
-            result.brands.push(...brands),
-        )
-        console.log(result, "anurag1")
-
         to_index()
 
+        // navigation("/table" ,{data} )
 
-
+        //    console.log(data)
 
 
         // setData((prev) => {
@@ -632,8 +695,10 @@ const Muljis = () => {
 
 
 
+
+
     return (
-        <>
+        <>  <Navbar />
             <div className="container-fluid">
                 <form onSubmit={onSubmit}>
                     <div className="row">
@@ -734,7 +799,7 @@ const Muljis = () => {
                                 </div>
                             </div>
 
-                            <div className="row">
+                            {/* <div className="row">
                                 <div className="container">
                                     <h5 className='p-2'>Shortcut</h5>
                                     {DiamondShortCut.map((items, index) => <div key={index} className="cat action">
@@ -749,7 +814,7 @@ const Muljis = () => {
                                         </label>
                                     </div>)}
                                 </div>
-                            </div>
+                            </div> */}
 
 
                             <div className="row">
@@ -838,7 +903,7 @@ const Muljis = () => {
                                 </div>
                             </div>
 
-                            <div className="row">
+                            {/* <div className="row">
                                 <div className="container">
                                     <h5 className='p-2'>Brands</h5>
                                     {DiamondBrands.map((items, index) => <div key={index} className="cat action">
@@ -853,15 +918,56 @@ const Muljis = () => {
                                         </label>
                                     </div>)}
                                 </div>
-                            </div>
+                            </div> */}
 
                         </div>
                     </div>
                     {/* <input type='submit' value='Submit' /> */}
-                    <button>Submit</button>
-                    <button onClick={to_index}> hit api </button>
+                    <button className="btn btn-success my-2" >Submit </button>
+                    {/* <button onClick={to_index}> hit api </button> */}
                 </form>
+
             </div>
+            <section>
+                {data ? 
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">SHAPE</th>
+                            <th scope="col">CARAT</th>
+                            <th scope="col">COLOR</th>
+                            <th scope="col">CLEARITY</th>
+                            <th scope="col">SYMMETRY</th>
+                            <th scope="col">CUT</th>
+                            <th scope="col">LOCATION</th>
+                            <th scope="col">LAB</th>
+                            <th scope="col">POLISH</th>
+                            <th scope="col">FLUORESENCE</th>
+                            {/* <th scope="col">BRANDS</th> */}
+
+
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {data?.data.map((item) => (
+                        <tr>
+                            <th>{item.shape}</th>
+                            <td>{item.carat}</td>
+                            <td>{item.color}</td>
+                            <td>{item.clarity}</td>
+                            <th>{item.sym}</th>
+                            <td>{item.cut}</td>
+                            <td>{item.country}</td>
+                            <td>{item.lab}</td>
+                            <td>{item.pol}</td>
+                            <td>{item.flo}</td>
+                            
+                        </tr>))}
+                        
+                    </tbody>
+                </table> : ""}
+            </section>
 
         </>
     )
