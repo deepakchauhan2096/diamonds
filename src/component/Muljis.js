@@ -955,7 +955,7 @@ const Muljis = () => {
                                     </thead>
                                     <tbody>
                                         {data?.data.map((item, index) => (
-                                            <tr style={{backgroundColor:"blue"}}>
+                                            <tr className="table-bg">
                                                 <td >{item.shape}</td>
                                                 <td>{item.carat}</td>
                                                 <td>{item.color}</td>
