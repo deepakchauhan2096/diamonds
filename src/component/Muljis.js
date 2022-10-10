@@ -3,6 +3,7 @@ import axios from 'axios';
 import './style.css'
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom"
+import { tab } from "@testing-library/user-event/dist/tab";
 
 
 const DiamondShape = [
@@ -412,7 +413,7 @@ const Muljis = () => {
     const [brands, setBrands] = useState([])
     // const [result, setResult] = useState({ carat: [], shape: [], color: [], clearity: [], sym: [], shortCut: [], cut: [], location: [], lab: [], polish: [], fluroscence: [], brands: [] })
     const [data, setData] = useState();
-    // const [hit, setHit] = useState(false);
+    // const [strip, setStrip] = useState('');
 
     // useEffect(() => {
     //     const alldata = () => {
@@ -953,9 +954,9 @@ const Muljis = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {data?.data.map((item) => (
-                                            <tr>
-                                                <td>{item.shape}</td>
+                                        {data?.data.map((item, index) => (
+                                            <tr style={{backgroundColor:"blue"}}>
+                                                <td >{item.shape}</td>
                                                 <td>{item.carat}</td>
                                                 <td>{item.color}</td>
                                                 <td>{item.clarity}</td>
