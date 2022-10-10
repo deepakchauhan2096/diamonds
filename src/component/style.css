@@ -1,110 +1,166 @@
 * {
-    font-size: 0.8rem;
-    
+  font-size: 0.8rem;
+
 }
 
-h5{
-  margin:0;
+h5 {
+  margin: 0;
   padding: 0;
 }
 
-.box-container{
-    display:flex;
-    flex-direction: row;
-    overflow: auto;
+.box-container {
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
 }
 
-.box-diamond{
-   white-space: nowrap;
+.box-diamond {
+  white-space: nowrap;
 }
 
-.box-carat-ring{
-    white-space: nowrap;
+.box-carat-ring {
+  white-space: nowrap;
 }
 
-.diamond-color{
-    white-space: nowrap;
+.diamond-color {
+  white-space: nowrap;
 }
 
-.box:hover{
-    background-color: orange !important;
+.box:hover {
+  background-color: #0dcaf0 !important;
 }
 
 .break {
-    margin-top:10px;
+  margin-top: 10px;
 }
 
 /* checkboxes */
 
 
-  /* .container{width: 250px; height: 38px; margin: 100px auto;} */
-  
-  /* div label input {margin-right: 100px;} */
-  
-  .cat{
-    margin: 2px;
-    background-color: whitesmoke;
-    border-radius: 4px;
-    /* border: 1px solid #333; */
-    overflow: hidden;
-    /* float: left; */
-    position: relative;
-    width: auto;
-    height: 3.2em;
-    display: inline-block;
-    cursor: pointer;
-  }
-  
-  .cat label {
-    line-height: 3.0em;
-    width: 8.0em;
-    height: 3.0em;
-  }
-  
-  .cat label span {
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    text-align: center;
-    width: 100%;
-    cursor: pointer;
-    user-select: none;
-    font-weight: 600;
-  }
-  
-  .cat label input {
-    position: absolute;
-    display: none;
-    color: #333 !important;
-    
-  }
-  /* selects all of the text within the input element and changes the color of the text */
-  .cat label input + span{color: #333;}
-  
-  
-  /* This will declare how a selected input will look giving generic properties */
-  .cat input:checked + span {
-      color: #ffffff;
-      text-shadow: 0 0  6px rgba(0, 0, 0, 0.8);
-      font-weight: 600;
-  }
-  
-  
-  
-  .action input:checked + span{background-color: #F75A1B;}
+/* .container{width: 250px; height: 38px; margin: 100px auto;} */
+
+/* div label input {margin-right: 100px;} */
+
+.cat {
+  margin: 2px;
+  background-color: whitesmoke;
+  border-radius: 4px;
+  /* border: 1px solid #333; */
+  overflow: hidden;
+  /* float: left; */
+  position: relative;
+  width: auto;
+  height: 3.2em;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.cat label {
+  line-height: 3.0em;
+  width: 8.0em;
+  height: 3.0em;
+}
+
+.cat label span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 600;
+}
+
+.cat label span:hover{
+  background-color:rgb(181, 181, 181);
+  color: #fff;
+}
+
+.cat label input {
+  position: absolute;
+  display: none;
+  color: #333 !important;
+
+}
+
+.container-main {
+  height: 92.5vh !important;
+  overflow-Y: scroll;
+  position: relative;
+  /* background-color: aqua; */
+}
+
+
+/* selects all of the text within the input element and changes the color of the text */
+.cat label input+span {
+  color: #333;
+}
+
+
+/* This will declare how a selected input will look giving generic properties */
+.cat input:checked+span {
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+  font-weight: 600;
+}
+
+
+
+.action input:checked+span {
+  background-color: #0dcaf0;
+}
 
 
 /* button width */
 
 .color-width {
-    width: 5.0em !important;
+  width: 3.0em !important;
 }
 
 
 .clearity-width {
-    width: 5.0em !important;
+  width: 5.0em !important;
 }
 
- 
+::-webkit-scrollbar {
+  width: 5px;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.thead-dark tr th {
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+  background-color: ghostwhite;
+
+}
+
+.table tr td {
+  border-left: 1px solid #f1f1f1;
+  border-right: 1px solid #f1f1f1;
+  background-color:#fff;
+
+}
+
+.dashboard{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  font-size: 14px;
+}

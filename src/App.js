@@ -6,7 +6,7 @@ function App() {
   return (
     <Router>
         <Routes>
-            <Route path='home' element={<Muljis/>}/>
+            <Route path='/' element={<Muljis/>}/>
             <Route path='table' element={<Table/>} />
         </Routes>
     </Router>

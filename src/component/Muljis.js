@@ -287,7 +287,7 @@ const DiamondLocation = [
         name: "INDIA"
     },
     {
-        name: "HONG KONG"
+        name: "HONGKONG"
     },
     {
         name: "ISRAEL"
@@ -699,107 +699,109 @@ const Muljis = () => {
 
     return (
         <>  <Navbar />
-            <div className="container-fluid">
-                <form onSubmit={onSubmit}>
-                    <div className="row">
-                        <div className="container">
-                            <h5 className='p-2'>Shape</h5>
-
-                            {DiamondShape.map((items, index) => <div key={index} className="cat action">
-                                <label>
-                                    <input
-                                        type="checkbox"
-                                        value={items.name}
-                                        name="shape"
-                                        onChange={HandleShape}
-                                    />
-                                    <span>{items.name}</span>
-                                </label>
-                            </div>)}
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        <div className="container">
-                            <h5 className='p-2'>Carat</h5>
-
-                            {DiamondCarat.map((items, index) => <div key={index} className="cat action">
-                                <label>
-                                    <input
-                                        type="checkbox"
-                                        value={items.name}
-                                        name="carat"
-                                        onChange={(e) => HandleCarat(e, index)}
-                                    />
-                                    <span>{items.name}</span>
-                                </label>
-                            </div>)}
-
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        <div className="container">
-                            <h5 className='p-2'>Color</h5>
-
-                            {DiamondColor.map((items, index) => <div key={index} className="cat action">
-                                <label className='color-width'>
-                                    <input
-                                        type="checkbox"
-                                        value={items.name}
-                                        name="color"
-                                        onChange={(e) => HandleColor(e, index)}
-                                    />
-                                    <span >{items.name}</span>
-                                </label>
-                            </div>)}
-
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        <div className="container">
-
-                            <h5 className='p-2'>Clearity</h5>
-
-                            {DiamondClearity.map((items, index) => <div key={index} className="cat action">
-                                <label className='clearity-width'>
-                                    <input
-                                        type="checkbox"
-                                        value={items.name}
-                                        name="Clearity"
-                                        onChange={(e) => HandleClearity(e, index)}
-                                    />
-                                    <span >{items.name}</span>
-                                </label>
-                            </div>)}
-
-                        </div>
-                    </div>
-
-
-
-                    <div className="row">
-                        <div className="col-lg-6">
-
+            <div className="container-fluid ">
+                <div className="row ">
+                    <div className="col-3 container-main">
+                        <form onSubmit={onSubmit}>
                             <div className="row">
                                 <div className="container">
-                                    <h5 className='p-2'>Symmetry</h5>
-                                    {DiamondSymmetry.map((items, index) => <div key={index} className="cat action">
+                                    <h5 className='p-2'>Shape</h5>
+
+                                    {DiamondShape.map((items, index) => <div key={index} className="cat action">
                                         <label>
                                             <input
                                                 type="checkbox"
-                                                value={items.title}
-                                                name="symmetry"
-                                                onChange={(e) => HandleSym(e, index)}
+                                                value={items.name}
+                                                name="shape"
+                                                onChange={HandleShape}
                                             />
-                                            <span >{items.name}</span>
+                                            <span>{items.name}</span>
                                         </label>
                                     </div>)}
                                 </div>
                             </div>
 
-                            {/* <div className="row">
+                            <div className="row">
+                                <div className="container">
+                                    <h5 className='p-2'>Carat</h5>
+
+                                    {DiamondCarat.map((items, index) => <div key={index} className="cat action">
+                                        <label>
+                                            <input
+                                                type="checkbox"
+                                                value={items.name}
+                                                name="carat"
+                                                onChange={(e) => HandleCarat(e, index)}
+                                            />
+                                            <span>{items.name}</span>
+                                        </label>
+                                    </div>)}
+
+                                </div>
+                            </div>
+
+                            <div className="row">
+                                <div className="container">
+                                    <h5 className='p-2'>Color</h5>
+
+                                    {DiamondColor.map((items, index) => <div key={index} className="cat action">
+                                        <label className='color-width'>
+                                            <input
+                                                type="checkbox"
+                                                value={items.name}
+                                                name="color"
+                                                onChange={(e) => HandleColor(e, index)}
+                                            />
+                                            <span >{items.name}</span>
+                                        </label>
+                                    </div>)}
+
+                                </div>
+                            </div>
+
+                            <div className="row">
+                                <div className="container">
+
+                                    <h5 className='p-2'>Clearity</h5>
+
+                                    {DiamondClearity.map((items, index) => <div key={index} className="cat action">
+                                        <label className='clearity-width'>
+                                            <input
+                                                type="checkbox"
+                                                value={items.name}
+                                                name="Clearity"
+                                                onChange={(e) => HandleClearity(e, index)}
+                                            />
+                                            <span >{items.name}</span>
+                                        </label>
+                                    </div>)}
+
+                                </div>
+                            </div>
+
+
+
+                            {/* <div className="row"> */}
+                            <div className="col">
+
+                                <div className="row">
+                                    <div className="container">
+                                        <h5 className='p-2'>Symmetry</h5>
+                                        {DiamondSymmetry.map((items, index) => <div key={index} className="cat action">
+                                            <label>
+                                                <input
+                                                    type="checkbox"
+                                                    value={items.title}
+                                                    name="symmetry"
+                                                    onChange={(e) => HandleSym(e, index)}
+                                                />
+                                                <span >{items.name}</span>
+                                            </label>
+                                        </div>)}
+                                    </div>
+                                </div>
+
+                                {/* <div className="row">
                                 <div className="container">
                                     <h5 className='p-2'>Shortcut</h5>
                                     {DiamondShortCut.map((items, index) => <div key={index} className="cat action">
@@ -814,96 +816,96 @@ const Muljis = () => {
                                         </label>
                                     </div>)}
                                 </div>
-                            </div> */}
+                                </div> */}
 
 
-                            <div className="row">
-                                <div className="container">
-                                    <h5 className='p-2'>Cut</h5>
-                                    {DiamondCut.map((items, index) => <div key={index} className="cat action">
-                                        <label>
-                                            <input
-                                                type="checkbox"
-                                                value={items.title}
-                                                name="Cut"
-                                                onChange={(e) => HandleCut(e, index)}
-                                            />
-                                            <span >{items.name}</span>
-                                        </label>
-                                    </div>)}
+                                <div className="row">
+                                    <div className="container">
+                                        <h5 className='p-2'>Cut</h5>
+                                        {DiamondCut.map((items, index) => <div key={index} className="cat action">
+                                            <label>
+                                                <input
+                                                    type="checkbox"
+                                                    value={items.title}
+                                                    name="Cut"
+                                                    onChange={(e) => HandleCut(e, index)}
+                                                />
+                                                <span >{items.name}</span>
+                                            </label>
+                                        </div>)}
+                                    </div>
+                                </div>
+
+                                <div className="row">
+                                    <div className="container">
+                                        <h5 className='p-2'>Location</h5>
+                                        {DiamondLocation.map((items, index) => <div key={index} className="cat action">
+                                            <label>
+                                                <input
+                                                    type="checkbox"
+                                                    value={items.name}
+                                                    name="Location"
+                                                    onChange={(e) => HandleLocation(e, index)}
+                                                />
+                                                <span >{items.name}</span>
+                                            </label>
+                                        </div>)}
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="row">
-                                <div className="container">
-                                    <h5 className='p-2'>Location</h5>
-                                    {DiamondLocation.map((items, index) => <div key={index} className="cat action">
-                                        <label>
-                                            <input
-                                                type="checkbox"
-                                                value={items.name}
-                                                name="Location"
-                                                onChange={(e) => HandleLocation(e, index)}
-                                            />
-                                            <span >{items.name}</span>
-                                        </label>
-                                    </div>)}
+                            <div className="col">
+                                <div className="row">
+                                    <div className="container">
+                                        <h5 className='p-2'>Lab</h5>
+                                        {DiamondLab.map((items, index) => <div key={index} className="cat action">
+                                            <label>
+                                                <input
+                                                    type="checkbox"
+                                                    value={items.name}
+                                                    name="Lab"
+                                                    onChange={(e) => HandleLab(e, index)}
+                                                />
+                                                <span >{items.name}</span>
+                                            </label>
+                                        </div>)}
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <div className="col-lg-6">
-                            <div className="row">
-                                <div className="container">
-                                    <h5 className='p-2'>Lab</h5>
-                                    {DiamondLab.map((items, index) => <div key={index} className="cat action">
-                                        <label>
-                                            <input
-                                                type="checkbox"
-                                                value={items.name}
-                                                name="Lab"
-                                                onChange={(e) => HandleLab(e, index)}
-                                            />
-                                            <span >{items.name}</span>
-                                        </label>
-                                    </div>)}
+                                <div className="row">
+                                    <div className="container">
+                                        <h5 className='p-2'>Polish</h5>
+                                        {DiamondPolish.map((items, index) => <div key={index} className="cat action">
+                                            <label>
+                                                <input
+                                                    type="checkbox"
+                                                    value={items.title}
+                                                    name="Polish"
+                                                    onChange={(e) => HandlePolish(e, index)}
+                                                /><span >{items.name}</span>
+                                            </label>
+                                        </div>)}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="row">
-                                <div className="container">
-                                    <h5 className='p-2'>Polish</h5>
-                                    {DiamondPolish.map((items, index) => <div key={index} className="cat action">
-                                        <label>
-                                            <input
-                                                type="checkbox"
-                                                value={items.title}
-                                                name="Polish"
-                                                onChange={(e) => HandlePolish(e, index)}
-                                            /><span >{items.name}</span>
-                                        </label>
-                                    </div>)}
+                                <div className="row">
+                                    <div className="container">
+                                        <h5 className='p-2'>Fluoresence</h5>
+                                        {DiamondFluorescence.map((items, index) => <div key={index} className="cat action">
+                                            <label>
+                                                <input
+                                                    type="checkbox"
+                                                    value={items.title}
+                                                    name="Flurosence"
+                                                    onChange={(e) => HandleFluo(e, index)}
+                                                />
+                                                <span >{items.name}</span>
+                                            </label>
+                                        </div>)}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="row">
-                                <div className="container">
-                                    <h5 className='p-2'>Fluoresence</h5>
-                                    {DiamondFluorescence.map((items, index) => <div key={index} className="cat action">
-                                        <label>
-                                            <input
-                                                type="checkbox"
-                                                value={items.title}
-                                                name="Flurosence"
-                                                onChange={(e) => HandleFluo(e, index)}
-                                            />
-                                            <span >{items.name}</span>
-                                        </label>
-                                    </div>)}
-                                </div>
-                            </div>
-
-                            {/* <div className="row">
+                                {/* <div className="row">
                                 <div className="container">
                                     <h5 className='p-2'>Brands</h5>
                                     {DiamondBrands.map((items, index) => <div key={index} className="cat action">
@@ -920,55 +922,59 @@ const Muljis = () => {
                                 </div>
                             </div> */}
 
-                        </div>
+                            </div>
+                            {/* </div> */}
+                            {/* <input type='submit' value='Submit' /> */}
+                            <button className="btn btn-secondary my-2">Submit </button>
+                            {/* <button onClick={to_index}> hit api </button> */}
+                        </form>
+
                     </div>
-                    {/* <input type='submit' value='Submit' /> */}
-                    <button className="btn btn-success my-2" >Submit </button>
-                    {/* <button onClick={to_index}> hit api </button> */}
-                </form>
+                    <div className="col-9 container-main g-0">
+                        <section>
+                            {data ?
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col" >SHAPE</th>
+                                            <th scope="col" >CARAT</th>
+                                            <th scope="col">COLOR</th>
+                                            <th scope="col">CLEARITY</th>
+                                            <th scope="col">SYMMETRY</th>
+                                            <th scope="col">CUT</th>
+                                            <th scope="col">LOCATION</th>
+                                            <th scope="col">LAB</th>
+                                            <th scope="col">POLISH</th>
+                                            <th scope="col">FLUORESENCE</th>
+                                            {/* <th scope="col">BRANDS</th> */}
+
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {data?.data.map((item) => (
+                                            <tr>
+                                                <td>{item.shape}</td>
+                                                <td>{item.carat}</td>
+                                                <td>{item.color}</td>
+                                                <td>{item.clarity}</td>
+                                                <td>{item.sym}</td>
+                                                <td>{item.cut}</td>
+                                                <td>{item.country}</td>
+                                                <td>{item.lab}</td>
+                                                <td>{item.pol}</td>
+                                                <td>{item.flo}</td>
+
+                                            </tr>))}
+
+                                    </tbody>
+                                </table> : <p className="dashboard">Please select given choices to show results</p>}
+                        </section>
+                    </div>
+                </div>
 
             </div>
-            <section>
-                {data ? 
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">SHAPE</th>
-                            <th scope="col">CARAT</th>
-                            <th scope="col">COLOR</th>
-                            <th scope="col">CLEARITY</th>
-                            <th scope="col">SYMMETRY</th>
-                            <th scope="col">CUT</th>
-                            <th scope="col">LOCATION</th>
-                            <th scope="col">LAB</th>
-                            <th scope="col">POLISH</th>
-                            <th scope="col">FLUORESENCE</th>
-                            {/* <th scope="col">BRANDS</th> */}
-
-
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data?.data.map((item) => (
-                        <tr>
-                            <th>{item.shape}</th>
-                            <td>{item.carat}</td>
-                            <td>{item.color}</td>
-                            <td>{item.clarity}</td>
-                            <th>{item.sym}</th>
-                            <td>{item.cut}</td>
-                            <td>{item.country}</td>
-                            <td>{item.lab}</td>
-                            <td>{item.pol}</td>
-                            <td>{item.flo}</td>
-                            
-                        </tr>))}
-                        
-                    </tbody>
-                </table> : ""}
-            </section>
-
         </>
     )
 }
