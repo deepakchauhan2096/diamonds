@@ -71,7 +71,7 @@ const DiamondCarat = [
         name: "0.50-0.69"
     },
     {
-        name: "0.70-8.89"
+        name: "0.70-0.89"
     },
     {
         name: "0.90-0.99"
@@ -91,9 +91,7 @@ const DiamondCarat = [
     {
         name: "4.00-4.99"
     },
-    {
-        name: "5.00-4.99"
-    },
+
     {
         name: "5.00-9.99"
     },
@@ -102,53 +100,6 @@ const DiamondCarat = [
     }
 ]
 
-const min = [
-    {
-        name: 0.15
-    },
-    {
-        name: 0.23
-    },
-    {
-        name: 0.30
-    },
-    {
-        name: 0.40
-    },
-    {
-        name: 0.50
-    },
-    {
-        name: 0.70
-    },
-    {
-        name: 0.90
-    },
-    {
-        name: 1.00
-    },
-    {
-        name: 1.50
-    },
-    {
-        name: 2.00
-    },
-    {
-        name: 3.00
-    },
-    {
-        name: 4.00
-    },
-    {
-        name: 5.00
-    },
-    {
-        name: 5.00
-    },
-    {
-        name: 10
-    }
-]
 
 const DiamondColor = [
     {
@@ -191,7 +142,10 @@ const DiamondColor = [
         name: "P"
     },
     {
-        name: "QR"
+        name: "Q"
+    },
+    {
+        name: "R"
     },
 
     {
@@ -461,7 +415,9 @@ const Muljis = () => {
     const [brands, setBrands] = useState([])
     // const [result, setResult] = useState({ carat: [], shape: [], color: [], clearity: [], sym: [], shortCut: [], cut: [], location: [], lab: [], polish: [], fluroscence: [], brands: [] })
     const [data, setData] = useState();
-    // const [strip, setStrip] = useState('');
+    // const [min, setMin] = useState(0);
+    // const [max, setMax] = useState(0);
+
 
     // useEffect(() => {
     //     const alldata = () => {
@@ -496,7 +452,8 @@ const Muljis = () => {
     //     console.log("hit is false");
     // }
 
-
+    var min;
+    var max;
 
 
     function HandleShape(e) {
@@ -511,23 +468,15 @@ const Muljis = () => {
     }
 
     function HandleCarat(e) {
-        const isChecked = e.target.checked;
-        if (isChecked) {
-            setCarat([...carat, e.target.value])
-            Handlemin(e.target.value)
-        } else {
-            const index = carat.indexOf(e.target.value);
-            carat.splice(index, 1);
-            setCarat(carat);
-        }
-       
+        const carat = e.target.value;
+        setCarat(carat);
     }
 
 
     function Handlemin(e) {
 
         console.log(e, "fhfhfhfh")
-        
+
     }
 
     function HandleColor(e) {
@@ -541,24 +490,24 @@ const Muljis = () => {
         }
     }
 
-   
 
 
-    function HandleClearity(e,index) {
+
+    function HandleClearity(e, index) {
         const isChecked = e.target.checked;
         if (isChecked) {
             setClearity([...clearity, e.target.value])
-           
+
         } else {
             const index = clearity.indexOf(e.target.value);
             clearity.splice(index, 1);
             setClearity(clearity);
-           
+
         }
-       
+
     }
 
-    
+
 
     // function Handlemax(e) {
     //     const isChecked = e.target.value;
@@ -682,7 +631,83 @@ const Muljis = () => {
     // }
 
 
-    const to_index = async () => {
+    const onSubmit = (event) => {
+        event.preventDefault();
+        console.log(shape);
+        console.log(carat, "carat");
+
+
+
+        if (carat == "0.15-0.22") {
+            min = 0.15;
+            max = 0.22;
+        } else if (carat == "0.23-0.29") {
+            min = 0.23;
+            max = 0.29;
+        } else if (carat == "0.30-0.39") {
+            min = 0.30;
+            max = 0.39;
+        } else if (carat == "0.40-0.49") {
+            min = 0.40;
+            max = 0.49;
+        } else if (carat == "0.50-0.69") {
+            min = 0.50;
+            max = 0.69;
+        } else if (carat == "0.70-0.89") {
+            min = 0.70;
+            max = 0.89;
+        } else if (carat == "0.90-0.99") {
+            min = 0.90;
+            max = 0.99;
+        } else if (carat == "1.00-1.49") {
+            min = 1.00;
+            max = 1.49;
+        } else if (carat == "1.50-1.99") {
+            min = 1.50;
+            max = 1.99;
+        } else if (carat == "2.00-2.99") {
+            min = 2.00;
+            max = 2.99;
+        } else if (carat == "3.00-3.99") {
+            min = 3.00;
+            max = 3.99;
+        } else if (carat == "4.00-4.99") {
+            min = 4.00;
+            max = 4.99;
+        } else if (carat == "5.00-9.99") {
+            min = 5.00;
+            max = 9.99;
+        } else {
+            min = 0;
+            max = 100;
+        }
+
+        // navigation("/table" ,{data} )
+
+        console.log(min, "min")
+        console.log(max, "max")
+        to_index(min, max)
+
+        
+
+        
+
+
+        // setData((prev) => {
+        //     return { ...prev, carat: [...data.carat, "dfsd"] };
+        //   });
+    }
+
+    
+        // let filtered = filterRange(arr, 1, 4);
+    //   }
+    
+    
+
+
+
+
+    const to_index = async (min, max) => {
 
         const config = {
             method: "POST",
@@ -700,6 +725,8 @@ const Muljis = () => {
                 polish,
                 fluoresence,
                 brands,
+                min,
+                max
             })
         }
 
@@ -720,6 +747,8 @@ const Muljis = () => {
                 polish,
                 fluoresence,
                 brands,
+                min,
+                max
 
             }, config).then((res) => {
 
@@ -744,40 +773,11 @@ const Muljis = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-    const onSubmit = (event) => {
-        event.preventDefault();
-        console.log(shape);
-        console.log(carat);
-        to_index()
-
-        // navigation("/table" ,{data} )
-
-        //    console.log(data)
-
-
-        // setData((prev) => {
-        //     return { ...prev, carat: [...data.carat, "dfsd"] };
-        //   });
-    }
-
-
-
-
-
     return (
         <>  <Navbar />
             <div className="container-fluid ">
                 <div className="row ">
-                    <div className="col-3 container-main">
+                    <div className="col-lg-12 col-xl-3   container-main">
                         <form onSubmit={onSubmit}>
                             <div className="row">
                                 <div className="container">
@@ -786,6 +786,7 @@ const Muljis = () => {
                                     {DiamondShape.map((items, index) => <div key={index} className="cat action">
                                         <label>
                                             <input
+                                                // required
                                                 type="checkbox"
                                                 value={items.name}
                                                 name="shape"
@@ -804,7 +805,7 @@ const Muljis = () => {
                                     {DiamondCarat.map((items, index) => <div key={index} className="cat action">
                                         <label>
                                             <input
-                                                type="checkbox"
+                                                type="radio"
                                                 value={items.name}
                                                 name="carat"
                                                 onChange={(e) => HandleCarat(e, index)}
@@ -1006,7 +1007,7 @@ const Muljis = () => {
                         </form>
 
                     </div>
-                    <div className="col-9 container-main g-0">
+                    <div className="col-xl-9 col-md-12 container-main g-0">
                         <section>
                             {data ?
                                 <table class="table">
