@@ -102,6 +102,54 @@ const DiamondCarat = [
     }
 ]
 
+const min = [
+    {
+        name: 0.15
+    },
+    {
+        name: 0.23
+    },
+    {
+        name: 0.30
+    },
+    {
+        name: 0.40
+    },
+    {
+        name: 0.50
+    },
+    {
+        name: 0.70
+    },
+    {
+        name: 0.90
+    },
+    {
+        name: 1.00
+    },
+    {
+        name: 1.50
+    },
+    {
+        name: 2.00
+    },
+    {
+        name: 3.00
+    },
+    {
+        name: 4.00
+    },
+    {
+        name: 5.00
+    },
+    {
+        name: 5.00
+    },
+    {
+        name: 10
+    }
+]
+
 const DiamondColor = [
     {
         name: "D"
@@ -466,11 +514,20 @@ const Muljis = () => {
         const isChecked = e.target.checked;
         if (isChecked) {
             setCarat([...carat, e.target.value])
+            Handlemin(e.target.value)
         } else {
             const index = carat.indexOf(e.target.value);
             carat.splice(index, 1);
             setCarat(carat);
         }
+       
+    }
+
+
+    function Handlemin(e) {
+
+        console.log(e, "fhfhfhfh")
+        
     }
 
     function HandleColor(e) {
@@ -484,17 +541,35 @@ const Muljis = () => {
         }
     }
 
+   
 
-    function HandleClearity(e) {
+
+    function HandleClearity(e,index) {
         const isChecked = e.target.checked;
         if (isChecked) {
             setClearity([...clearity, e.target.value])
+           
         } else {
             const index = clearity.indexOf(e.target.value);
             clearity.splice(index, 1);
             setClearity(clearity);
+           
         }
+       
     }
+
+    
+
+    // function Handlemax(e) {
+    //     const isChecked = e.target.value;
+    //     if (isChecked) {
+    //         setClearity([...min, e.target.value])
+    //     } else {
+    //         const index = min.indexOf(e.target.value);
+    //         min.splice(index, 1);
+    //         setClearity(min);
+    //     }
+    // }
 
 
     function HandleSym(e) {
@@ -947,10 +1022,9 @@ const Muljis = () => {
                                             <th scope="col">LAB</th>
                                             <th scope="col">POLISH</th>
                                             <th scope="col">FLUORESENCE</th>
+                                            <th scope="col">PRICE</th>
+                                            {/* <th>IMAGE</th> */}
                                             {/* <th scope="col">BRANDS</th> */}
-
-
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -966,6 +1040,8 @@ const Muljis = () => {
                                                 <td>{item.lab}</td>
                                                 <td>{item.pol}</td>
                                                 <td>{item.flo}</td>
+                                                <td>{item.total_$}</td>
+                                                {/* <td><img src="https://s3.us-east-2.amazonaws.com/docstone/7442661027.jpg" width="20px" height="20px"/></td> */}
 
                                             </tr>))}
 

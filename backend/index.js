@@ -31,7 +31,16 @@ app.post("/selected", cors(), (req, res) => {
        
       if(fitlerByColor.length == 0) {
         fitlerByColor = fitlerByShape;
+
       }
+
+      
+
+
+
+      //.......... carat 
+
+      
 
       // ......filterby clearity
 
