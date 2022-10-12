@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 import './style.css'
 import Navbar from "./Navbar";
-import { useNavigate } from "react-router-dom"
-import { tab } from "@testing-library/user-event/dist/tab";
-
 
 const DiamondShape = [
     {
@@ -219,20 +216,20 @@ const DiamondClearity = [
 
 ]
 
-const DiamondShortCut = [
-    {
-        name: "3EX"
-    },
-    {
-        name: "3EX-NON"
-    },
-    {
-        name: "NOBG"
-    },
-    {
-        name: "100% EYECLEAN"
-    }
-]
+// const DiamondShortCut = [
+//     {
+//         name: "3EX"
+//     },
+//     {
+//         name: "3EX-NON"
+//     },
+//     {
+//         name: "NOBG"
+//     },
+//     {
+//         name: "100% EYECLEAN"
+//     }
+// ]
 
 const DiamondCut = [
     {
@@ -383,24 +380,19 @@ const DiamondFluorescence = [
     }
 ]
 
-const DiamondBrands = [
-    {
-        name: "FOREVERMARK"
-    },
-    {
-        name: "CANADAMARK"
-    },
-    {
-        name: "GIADOR"
-    }
-]
-
-
-
+// const DiamondBrands = [
+//     {
+//         name: "FOREVERMARK"
+//     },
+//     {
+//         name: "CANADAMARK"
+//     },
+//     {
+//         name: "GIADOR"
+//     }
+// ]
 
 const Muljis = () => {
-    const navigation = useNavigate();
-
     const [shape, setShape] = useState([])
     const [carat, setCarat] = useState([])
     const [color, setColor] = useState([])
@@ -413,49 +405,10 @@ const Muljis = () => {
     const [polish, setPolish] = useState([])
     const [fluoresence, setFluroscence] = useState([])
     const [brands, setBrands] = useState([])
-    // const [result, setResult] = useState({ carat: [], shape: [], color: [], clearity: [], sym: [], shortCut: [], cut: [], location: [], lab: [], polish: [], fluroscence: [], brands: [] })
     const [data, setData] = useState();
-    // const [min, setMin] = useState(0);
-    // const [max, setMax] = useState(0);
 
-
-    // useEffect(() => {
-    //     const alldata = () => {
-    //         fetch("http://localhost:4000/selected")
-    //             .then((res) => res.json())
-    //             .then((data) => setData(data.rows));
-    //         console.log(data, "all data of the selected");
-    //     };
-    //     alldata();
-
-    //     const interval = setInterval(() => {
-    //         setHit(true);
-    //     }, 3000000);
-
-    //     return () => clearInterval(interval);
-    // },[data]);
-
-    // if (hit === true) {
-    //     const alldata = () => {
-    //         fetch("http://localhost:4000/selected")
-    //             .then((res) => res.json())
-    //             .then((data) => setData(data.rows));
-    //         console.log(data, "all data hhhhhh sgdg ggggg");
-    //         console.log("hit is true");
-    //         setHit(false);
-    //         // console.log(formValues, "formvalues");
-    //         // alert(" 😃 Page refresh complete.  ");
-    //     };
-
-    //     alldata();
-    // } else {
-    //     console.log("hit is false");
-    // }
-
-    var min;
-    var max;
-
-
+    let min;
+    let max;
     function HandleShape(e) {
         const isChecked = e.target.checked;
         if (isChecked) {
@@ -472,13 +425,6 @@ const Muljis = () => {
         setCarat(carat);
     }
 
-
-    function Handlemin(e) {
-
-        console.log(e, "fhfhfhfh")
-
-    }
-
     function HandleColor(e) {
         const isChecked = e.target.checked;
         if (isChecked) {
@@ -490,10 +436,7 @@ const Muljis = () => {
         }
     }
 
-
-
-
-    function HandleClearity(e, index) {
+    function HandleClearity(e) {
         const isChecked = e.target.checked;
         if (isChecked) {
             setClearity([...clearity, e.target.value])
@@ -507,20 +450,6 @@ const Muljis = () => {
 
     }
 
-
-
-    // function Handlemax(e) {
-    //     const isChecked = e.target.value;
-    //     if (isChecked) {
-    //         setClearity([...min, e.target.value])
-    //     } else {
-    //         const index = min.indexOf(e.target.value);
-    //         min.splice(index, 1);
-    //         setClearity(min);
-    //     }
-    // }
-
-
     function HandleSym(e) {
         const isChecked = e.target.checked;
         if (isChecked) {
@@ -532,17 +461,16 @@ const Muljis = () => {
         }
     }
 
-
-    function HandleShortcut(e) {
-        const isChecked = e.target.checked;
-        if (isChecked) {
-            setShortcut([...shortcut, e.target.value])
-        } else {
-            const index = shortcut.indexOf(e.target.value);
-            shortcut.splice(index, 1);
-            setShortcut(shortcut);
-        }
-    }
+    // function HandleShortcut(e) {
+    //     const isChecked = e.target.checked;
+    //     if (isChecked) {
+    //         setShortcut([...shortcut, e.target.value])
+    //     } else {
+    //         const index = shortcut.indexOf(e.target.value);
+    //         shortcut.splice(index, 1);
+    //         setShortcut(shortcut);
+    //     }
+    // }
 
     function HandleCut(e) {
         const isChecked = e.target.checked;
@@ -611,74 +539,51 @@ const Muljis = () => {
         }
     }
 
-    // sending selected data to backend
-    // const to_index = () => {
-    //     let diamond_result = result
-    //     // console.log(result, "result")
-    //     const response = fetch("http://localhost:4000/selected", {
-    //         method: "POST",
-    //         headers: { "Content-Type": "application/json", },
-    //         body: JSON.stringify(diamond_result)
-    //     }).then((res) => {
-    //         return response.text(),
-    //         console.log("res : ", res)
-    //     }).then((res) => {
-    //         console.log("res : ", res)
-    //     })
-
-    //     //   console.log(body,"body")
-
-    // }
-
-
     const onSubmit = (event) => {
         event.preventDefault();
-        console.log(shape);
-        console.log(carat, "carat");
-
-
-
-        if (carat == "0.15-0.22") {
+        // console.log(shape);
+        console.log(fluoresence, "carat");
+        if (carat === "0.15-0.22") {
             min = 0.15;
             max = 0.22;
-        } else if (carat == "0.23-0.29") {
+        } else if (carat === "0.23-0.29") {
             min = 0.23;
             max = 0.29;
-        } else if (carat == "0.30-0.39") {
+        } else if (carat === "0.30-0.39") {
             min = 0.30;
             max = 0.39;
-        } else if (carat == "0.40-0.49") {
+        } else if (carat === "0.40-0.49") {
             min = 0.40;
             max = 0.49;
-        } else if (carat == "0.50-0.69") {
+        } else if (carat === "0.50-0.69") {
             min = 0.50;
             max = 0.69;
-        } else if (carat == "0.70-0.89") {
+        } else if (carat === "0.70-0.89") {
             min = 0.70;
             max = 0.89;
-        } else if (carat == "0.90-0.99") {
+        } else if (carat === "0.90-0.99") {
             min = 0.90;
             max = 0.99;
-        } else if (carat == "1.00-1.49") {
+        } else if (carat === "1.00-1.49") {
             min = 1.00;
             max = 1.49;
-        } else if (carat == "1.50-1.99") {
+        } else if (carat === "1.50-1.99") {
             min = 1.50;
             max = 1.99;
-        } else if (carat == "2.00-2.99") {
+        } else if (carat === "2.00-2.99") {
             min = 2.00;
             max = 2.99;
-        } else if (carat == "3.00-3.99") {
+        } else if (carat === "3.00-3.99") {
             min = 3.00;
             max = 3.99;
-        } else if (carat == "4.00-4.99") {
+        } else if (carat === "4.00-4.99") {
             min = 4.00;
             max = 4.99;
-        } else if (carat == "5.00-9.99") {
+        } else if (carat === "5.00-9.99") {
             min = 5.00;
             max = 9.99;
         } else {
-            min = 0;
+            min = 10;
             max = 100;
         }
 
@@ -688,27 +593,12 @@ const Muljis = () => {
         console.log(max, "max")
         to_index(min, max)
 
-        
-
-        
-
-
-        // setData((prev) => {
-        //     return { ...prev, carat: [...data.carat, "dfsd"] };
-        //   });
     }
 
-    
-        // let filtered = filterRange(arr, 1, 4);
-    //   }
-    
-    
 
-
-
+  
 
     const to_index = async (min, max) => {
-
         const config = {
             method: "POST",
             headers: { "Content-Type": "application/json", },
@@ -733,7 +623,7 @@ const Muljis = () => {
         try {
 
             console.log("upload started");
-            await axios.post('http://localhost:4000/selected', {
+            await axios.post('http://3.11.192.143:4000/selected', {
 
                 shape,
                 carat,
@@ -752,7 +642,7 @@ const Muljis = () => {
 
             }, config).then((res) => {
 
-                console.log(res, "hssggsgg");
+                // console.log(res, "hs");
                 setData(res)
 
             }).catch((err) => {
@@ -768,10 +658,6 @@ const Muljis = () => {
 
 
     }
-
-
-
-
 
     return (
         <>  <Navbar />
@@ -1000,32 +886,28 @@ const Muljis = () => {
                             </div> */}
 
                             </div>
-                            {/* </div> */}
-                            {/* <input type='submit' value='Submit' /> */}
                             <button className="btn btn-secondary my-2">Submit </button>
-                            {/* <button onClick={to_index}> hit api </button> */}
                         </form>
 
                     </div>
                     <div className="col-xl-9 col-md-12 container-main g-0">
                         <section>
                             {data ?
-                                <table class="table">
-                                    <thead class="thead-dark">
+                                <table className="table">
+                                    <thead className="thead-dark">
                                         <tr>
-                                            <th scope="col" >SHAPE</th>
-                                            <th scope="col" >CARAT</th>
-                                            <th scope="col">COLOR</th>
-                                            <th scope="col">CLEARITY</th>
-                                            <th scope="col">SYMMETRY</th>
-                                            <th scope="col">CUT</th>
-                                            <th scope="col">LOCATION</th>
-                                            <th scope="col">LAB</th>
-                                            <th scope="col">POLISH</th>
-                                            <th scope="col">FLUORESENCE</th>
-                                            <th scope="col">PRICE</th>
-                                            {/* <th>IMAGE</th> */}
-                                            {/* <th scope="col">BRANDS</th> */}
+                                            <th>SHAPE</th>
+                                            <th>CARAT</th>
+                                            <th>COLOR</th>
+                                            <th>CLEARITY</th>
+                                            <th>SYMMETRY</th>
+                                            <th>CUT</th>
+                                            <th>LOCATION</th>
+                                            <th>LAB</th>
+                                            <th>POLISH</th>
+                                            <th>FLUORESENCE</th>
+                                            <th>PRICE</th>
+                                            {/* <th >BRANDS</th> */}
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1042,7 +924,6 @@ const Muljis = () => {
                                                 <td>{item.pol}</td>
                                                 <td>{item.flo}</td>
                                                 <td>{item.total_$}</td>
-                                                {/* <td><img src="https://s3.us-east-2.amazonaws.com/docstone/7442661027.jpg" width="20px" height="20px"/></td> */}
 
                                             </tr>))}
 
