@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from './Navbar'
+import Home from './Home'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 const Table = () => {
@@ -7,7 +7,7 @@ const Table = () => {
     console.log(data)
     return (
         <>
-            <Navbar />
+            <Home />
             <div>Table</div>
         </>
     )

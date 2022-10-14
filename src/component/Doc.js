@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from 'axios';
+import { dataContext } from "../helpers/Context";
+import { CSVLink } from "react-csv";
 import './style.css'
-import Navbar from "./Navbar";
 
 const DiamondShape = [
     {
@@ -392,7 +393,7 @@ const DiamondFluorescence = [
 //     }
 // ]
 
-const Muljis = () => {
+const Doc = (props) => {
     const [shape, setShape] = useState([])
     const [carat, setCarat] = useState([])
     const [color, setColor] = useState([])
@@ -405,7 +406,10 @@ const Muljis = () => {
     const [polish, setPolish] = useState([])
     const [fluoresence, setFluroscence] = useState([])
     const [brands, setBrands] = useState([])
-    const [data, setData] = useState();
+    const { data, setData } = useContext(dataContext)
+    // const {form, setForm } = useContext(dataContext)
+    const { showHide } = props;
+
 
     let min;
     let max;
@@ -596,7 +600,7 @@ const Muljis = () => {
     }
 
 
-  
+
 
     const to_index = async (min, max) => {
         const config = {
@@ -623,7 +627,8 @@ const Muljis = () => {
         try {
 
             console.log("upload started");
-            await axios.post('http://3.11.192.143:4000/selected', {
+            // await axios.post('http://3.11.192.143:4000/selected', {
+            await axios.post('http://localhost:4000/selected', {
 
                 shape,
                 carat,
@@ -659,11 +664,19 @@ const Muljis = () => {
 
     }
 
+
+    const csvReport = {
+        data: data?.data.map((item) => item),
+        // headers: headers,
+        filename: 'Doc.csv'
+    };
+
     return (
-        <>  <Navbar />
-            <div className="container-fluid ">
-                <div className="row ">
-                    <div className="col-lg-12 col-xl-3   container-main">
+        <>
+            {/* <Navbar /> */}
+            <div className={showHide === "block" ? "container-fluid" : ""}>
+                <div className={showHide === "block" ? "row" : ""}>
+                    <div className="col-lg-12 col-xl-3 container-main" style={{ display: `${showHide}` }}>
                         <form onSubmit={onSubmit}>
                             <div className="row">
                                 <div className="container">
@@ -694,7 +707,7 @@ const Muljis = () => {
                                                 type="radio"
                                                 value={items.name}
                                                 name="carat"
-                                                onChange={(e) => HandleCarat(e, index)}
+                                                onChange={(e) => HandleCarat(e)}
                                             />
                                             <span>{items.name}</span>
                                         </label>
@@ -713,7 +726,7 @@ const Muljis = () => {
                                                 type="checkbox"
                                                 value={items.name}
                                                 name="color"
-                                                onChange={(e) => HandleColor(e, index)}
+                                                onChange={(e) => HandleColor(e)}
                                             />
                                             <span >{items.name}</span>
                                         </label>
@@ -733,7 +746,7 @@ const Muljis = () => {
                                                 type="checkbox"
                                                 value={items.name}
                                                 name="Clearity"
-                                                onChange={(e) => HandleClearity(e, index)}
+                                                onChange={(e) => HandleClearity(e)}
                                             />
                                             <span >{items.name}</span>
                                         </label>
@@ -756,7 +769,7 @@ const Muljis = () => {
                                                     type="checkbox"
                                                     value={items.title}
                                                     name="symmetry"
-                                                    onChange={(e) => HandleSym(e, index)}
+                                                    onChange={(e) => HandleSym(e)}
                                                 />
                                                 <span >{items.name}</span>
                                             </label>
@@ -791,7 +804,7 @@ const Muljis = () => {
                                                     type="checkbox"
                                                     value={items.title}
                                                     name="Cut"
-                                                    onChange={(e) => HandleCut(e, index)}
+                                                    onChange={(e) => HandleCut(e)}
                                                 />
                                                 <span >{items.name}</span>
                                             </label>
@@ -808,7 +821,7 @@ const Muljis = () => {
                                                     type="checkbox"
                                                     value={items.name}
                                                     name="Location"
-                                                    onChange={(e) => HandleLocation(e, index)}
+                                                    onChange={(e) => HandleLocation(e)}
                                                 />
                                                 <span >{items.name}</span>
                                             </label>
@@ -827,7 +840,7 @@ const Muljis = () => {
                                                     type="checkbox"
                                                     value={items.name}
                                                     name="Lab"
-                                                    onChange={(e) => HandleLab(e, index)}
+                                                    onChange={(e) => HandleLab(e)}
                                                 />
                                                 <span >{items.name}</span>
                                             </label>
@@ -844,7 +857,7 @@ const Muljis = () => {
                                                     type="checkbox"
                                                     value={items.title}
                                                     name="Polish"
-                                                    onChange={(e) => HandlePolish(e, index)}
+                                                    onChange={(e) => HandlePolish(e)}
                                                 /><span >{items.name}</span>
                                             </label>
                                         </div>)}
@@ -860,7 +873,7 @@ const Muljis = () => {
                                                     type="checkbox"
                                                     value={items.title}
                                                     name="Flurosence"
-                                                    onChange={(e) => HandleFluo(e, index)}
+                                                    onChange={(e) => HandleFluo(e)}
                                                 />
                                                 <span >{items.name}</span>
                                             </label>
@@ -890,9 +903,17 @@ const Muljis = () => {
                         </form>
 
                     </div>
-                    <div className="col-xl-9 col-md-12 container-main g-0">
+                    <div className={showHide === "block" ? "col-xl-9 col-md-12 container-main g-0" : "container-main"}>
+
+
                         <section>
-                            {data ?
+                            {/* <Menu /> */}
+                            {data ? <>
+                                <div className="d-flex flex-row justify-content-between bg-secondary text-white p-2 text-center">
+                                    <div className="sub-nav-text">DIAMONDS</div>
+                                    <CSVLink className="sub-nav-text" {...csvReport}>↓ Export to CSV</CSVLink>
+                                </div>
+
                                 <table className="table">
                                     <thead className="thead-dark">
                                         <tr>
@@ -911,7 +932,7 @@ const Muljis = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {data?.data.map((item, index) => (
+                                        {data?.data.map((item) => (
                                             <tr className="table-bg">
                                                 <td >{item.shape}</td>
                                                 <td>{item.carat}</td>
@@ -928,7 +949,7 @@ const Muljis = () => {
                                             </tr>))}
 
                                     </tbody>
-                                </table> : <p className="dashboard">Please select given choices to show results</p>}
+                                </table> </> : <p className="dashboard">Please select given choices to show results</p>}
                         </section>
                     </div>
                 </div>
@@ -938,4 +959,4 @@ const Muljis = () => {
     )
 }
 
-export default Muljis
+export default Doc

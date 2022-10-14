@@ -88,12 +88,9 @@ h5 {
 .container-main {
   height: 92.5vh !important;
   overflow-Y: scroll;
-  overflow-X: scroll;
   position: relative;
   /* background-color: aqua; */
 }
-
-
 
 
 /* selects all of the text within the input element and changes the color of the text */
@@ -105,7 +102,7 @@ h5 {
 /* This will declare how a selected input will look giving generic properties */
 .cat input:checked+span {
   color: #ffffff;
-  /* text-shadow: 0 0 6px rgba(0, 0, 0, 0.8); */
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
   font-weight: 600;
 }
 
@@ -130,6 +127,7 @@ h5 {
 ::-webkit-scrollbar {
   height: 5px;
   width: 5px;
+  overflow: visible;
 }
 
 /* Track */
@@ -167,28 +165,4 @@ h5 {
   left:50%;
   transform: translate(-50%,-50%);
   font-size: 14px;
-}
-
-.slider-content{
-  display: flex;
-  justify-content:space-between;
-}
-
-
-.bg{
-  background-color: #aa1212;
-}
-
-.sub-nav-text{
-  text-decoration: none;
-  color: #fff;
-}
-
-.sub-nav-text:hover{
-  color: #0dcaf0;
-}
-
-.container-form{
-  height: 100vh;
-  border:1px solid red;
 }
