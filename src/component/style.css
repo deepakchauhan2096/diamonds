@@ -112,7 +112,7 @@ h5 {
 
 
 .action input:checked+span {
-  background-color: #0dcaf0;
+  background-color: #0dcaf080;
 }
 
 
@@ -176,7 +176,7 @@ h5 {
 
 
 .bg{
-  background-color: #aa1212;
+  background-color:darkgreen;
 }
 
 .sub-nav-text{

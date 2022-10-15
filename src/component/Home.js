@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import Doc from './Doc';
+import Form from './Form';
 import Nivoda from './Nivoda';
 // import { dataContext } from "../helpers/Context";
 
@@ -8,6 +9,7 @@ const Home = () => {
     const [slide, setslide] = React.useState(1);
     const [name, setName] = React.useState('DIAMOND');
     const [showhide, setshowHide] = React.useState('block');
+
     const compare = <>
         <div className='container-fluid'>
             <div className='row'>
@@ -22,7 +24,7 @@ const Home = () => {
     </>
 
 
-    console.log(showhide, "sdknedkk")
+    console.log(showhide, "Please show")
 
     const handleSlide = (e, index) => {
         if (index) {
@@ -47,7 +49,7 @@ const Home = () => {
             <nav className="navbar navbar-expand-lg navbar-light bg-info position-sticky slider-content">
                 <a className="navbar-brand px-3 text-white">{name}</a>
                 <div>
-                    <button className={slide === 3 ? "btn btn-light mx-2 bg-white" : "btn btn-outline-light mx-2"} onClick={(e) => handleSlide(e, 3)}>||</button>
+                    <button className={slide === 3 ? "btn btn-light mx-2 bg-white" : "btn btn-outline-light mx-2"} onClick={(e) => handleSlide(e, 3)} title="compare">||</button>
                     <button className={slide === 1 ? "btn btn-light mx-2 bg-white" : "btn btn-outline-light mx-2"} onClick={(e) => handleSlide(e, 1)}>DIAMOND</button>
                     <button className={slide === 2 ? "btn btn-light mx-2 bg-white" : "btn btn-outline-light mx-2"} onClick={(e) => handleSlide(e, 2)}>NIVODA</button>
                     {/* <button className="btn btn-outline-light mx-2" onClick={() => setslide(e => !e)}>NIVODA</button> */}
@@ -56,7 +58,14 @@ const Home = () => {
 
             </nav>
             <div>
-                {slide === 1 ? <Doc showHide={"block"} /> : slide === 2 ? <Nivoda showHide={"block"} /> : slide === 3 ? compare : ""}
+                <div className='container-fluid'>
+                    <div className='row'>
+                        <Form showHide={slide === 3 ? "none":""}/>
+                        {slide === 1 ? <Doc showHide={"block"} /> :
+                            slide === 2 ? <Nivoda showHide={"block"} /> :
+                                slide === 3 ? compare : ""}
+                    </div>
+                </div>
             </div>
         </div>
     )
