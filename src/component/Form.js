@@ -134,16 +134,11 @@ const DiamondColor = [
         name: "N"
     },
     {
-        name: "O"
+        name: "OP"
     },
+
     {
-        name: "P"
-    },
-    {
-        name: "Q"
-    },
-    {
-        name: "R"
+        name: "QR"
     },
 
     {
@@ -153,10 +148,7 @@ const DiamondColor = [
         name: "T"
     },
     {
-        name: "U"
-    },
-    {
-        name: "V"
+        name: "UV"
     },
 
     {
@@ -200,10 +192,10 @@ const DiamondClearity = [
         name: "SI1"
     },
     {
-        name: "S12"
+        name: "SI2"
     },
     {
-        name: "S13"
+        name: "SI3"
     },
     {
         name: "I1"
@@ -213,6 +205,12 @@ const DiamondClearity = [
     },
     {
         name: "I3"
+    },
+    {
+        name: "VVS1"
+    },
+    {
+        name: "VVS2"
     }
 
 ]
@@ -279,6 +277,10 @@ const DiamondSymmetry = [
     {
         name: "POOR",
         title: "P"
+    },
+    {
+        name: "EXCELLENT",
+        title: "EX"
     }
 ]
 
@@ -368,7 +370,7 @@ const DiamondFluorescence = [
         title: "SLT"
     },
     {
-        name: "Mediunm",
+        name: "Medinum",
         title: "MED"
     },
     {
@@ -400,7 +402,7 @@ const Form = (props) => {
     const [clearity, setClearity] = useState([])
     const [sym, setSym] = useState([])
     const [shortcut, setShortcut] = useState([])
-    const [cut, setcut] = useState([])
+    const [cut, setCut] = useState([])
     const [location, setLocation] = useState([])
     const [lab, setLab] = useState([])
     const [polish, setPolish] = useState([])
@@ -480,11 +482,11 @@ const Form = (props) => {
     function HandleCut(e) {
         const isChecked = e.target.checked;
         if (isChecked) {
-            setcut([...cut, e.target.value])
+            setCut([...cut, e.target.value])
         } else {
             const index = cut.indexOf(e.target.value);
             cut.splice(index, 1);
-            setcut(cut);
+            setCut(cut);
         }
     }
 
@@ -727,15 +729,83 @@ const Form = (props) => {
 
 
     }
-    
+
     // const filteredcarat = fitlerByShape.map((e) => e.carat)
     const notSelect = data?.data.map((e) => e.shape)
+    const DuplicateShape = [...new Set(notSelect)];
+    const uniq = DuplicateShape.filter(element => {
+        return element !== null;
+    });
+    console.log(uniq, "not select");
 
-    const uniq = [...new Set(notSelect)];
-    console.log( uniq ,"not select");
+    //color
 
-//    const myval =  (uniq.filter((e) => e.includes('PRINCESS')))[0]
-//    console.log(myval, "myval")
+    const notSelectColor = data?.data.map((e) => e.color)
+    const DuplicateColor = [...new Set(notSelectColor)];
+    const uniqColor = DuplicateColor.filter(element => {
+        return element !== null;
+    });
+    console.log(uniqColor, "not select uniqColor");
+
+    //clearity
+    const notSelectClearity = data?.data.map((e) => e.clarity)
+    const DuplicateClearity = [...new Set(notSelectClearity)];
+    const uniqClarity = DuplicateClearity.filter(element => {
+        return element !== null;
+    });
+    console.log(uniqClarity, "not select uniqClarity");
+
+    //sym
+    const notSelectSym = data?.data.map((e) => e.sym)
+    const DuplicateSym = [...new Set(notSelectSym)];
+    const uniqSym = DuplicateSym.filter(element => {
+        return element !== null;
+    });
+    console.log(uniqSym, "not select notSelectSym");
+
+    //Cut
+    const notSelectCut = data?.data.map((e) => e.cut)
+    const DuplicateCut = [...new Set(notSelectCut)];
+    const uniqCut = DuplicateCut.filter(element => {
+        return element !== null;
+    });
+    console.log(uniqCut, "not select notSelectCut");
+
+    //Location
+    const notSelectLocation = data?.data.map((e) => e.country)
+    const DuplicateLocation = [...new Set(notSelectLocation)];
+    const uniqLocation = DuplicateLocation.filter(element => {
+        return element !== null;
+    });
+    console.log(uniqLocation, "not select notSelectLocation");
+
+
+    //Lab
+    const notSelectLab = data?.data.map((e) => e.lab)
+    const DuplicateLab = [...new Set(notSelectLab)];
+    const uniqLab = DuplicateLab.filter(element => {
+        return element !== null;
+    });
+    console.log(uniqLab, "not select notSelectLab");
+
+    //Polish
+    const notSelectPolish = data?.data.map((e) => e.pol)
+    const DuplicatePolish = [...new Set(notSelectPolish)];
+    const uniqPolish = DuplicatePolish.filter(element => {
+        return element !== null;
+    });
+    console.log(uniqPolish, "not select notSelectPolish");
+
+    //Fluroscence
+    const notSelectFluroscence = data?.data.map((e) => e.flo)
+    const DuplicateFluroscence = [...new Set(notSelectFluroscence)];
+    const uniqFluroscence = DuplicateFluroscence.filter(element => {
+        return element !== null;
+    });
+    console.log(uniqFluroscence, "not select notSelectFluroscence");
+
+    //    const myval =  (uniq.filter((e) => e.includes('PRINCESS')))[0]
+    //    console.log(myval, "myval")
 
     return (
         <>
@@ -747,10 +817,10 @@ const Form = (props) => {
                             <h5 className='p-2'>Shape</h5>
 
                             {DiamondShape.map((items, index) => <div key={index} className="cat action">
-                                <label  key={index} className={items.name === (uniq.filter((e) => e.includes(items.name)))[0] ? "bg" : ""} >
+                                <label key={index} className={items.name === (uniq.filter((e) => e.includes(items.name)))[0] ? "bg" : ""} >
                                     <input
                                         // required
-                                        
+
                                         type="checkbox"
                                         value={items.name}
                                         name="shape"
@@ -777,7 +847,18 @@ const Form = (props) => {
                                     <span>{items.name}</span>
                                 </label>
                             </div>)}
-
+                            <div className="cat action">
+                                
+                                    <input
+                                        type="number"
+                                        value="number"
+                                        name="carat"
+                                        className="inputcarat"
+                                        // onChange={(e) => HandleCarat(e)}
+                                    />
+                                    {/* <span></span> */}
+                              
+                            </div>
                         </div>
                     </div>
 
@@ -786,7 +867,7 @@ const Form = (props) => {
                             <h5 className='p-2'>Color</h5>
 
                             {DiamondColor.map((items, index) => <div key={index} className="cat action">
-                                <label className='color-width'>
+                                <label key={index} className={items.name === (uniqColor.filter((e) => e.includes(items.name)))[0] ? "bg" : ""}>
                                     <input
                                         type="checkbox"
                                         value={items.name}
@@ -806,7 +887,7 @@ const Form = (props) => {
                             <h5 className='p-2'>Clearity</h5>
 
                             {DiamondClearity.map((items, index) => <div key={index} className="cat action">
-                                <label className='clearity-width'>
+                                <label key={index} className={items.name === (uniqClarity.filter((e) => e.includes(items.name)))[0] ? "bg" : ""}>
                                     <input
                                         type="checkbox"
                                         value={items.name}
@@ -824,16 +905,15 @@ const Form = (props) => {
 
                     {/* <div className="row"> */}
                     <div className="col">
-
                         <div className="row">
                             <div className="container">
                                 <h5 className='p-2'>Symmetry</h5>
                                 {DiamondSymmetry.map((items, index) => <div key={index} className="cat action">
-                                    <label>
+                                    <label key={index} className={items.title === (uniqSym.filter((e) => e.includes(items.title)))[0] ? "bg" : ""}>
                                         <input
                                             type="checkbox"
                                             value={items.title}
-                                            name="symmetry"
+                                            name="Symmetry"
                                             onChange={(e) => HandleSym(e)}
                                         />
                                         <span >{items.name}</span>
@@ -864,7 +944,7 @@ const Form = (props) => {
                             <div className="container">
                                 <h5 className='p-2'>Cut</h5>
                                 {DiamondCut.map((items, index) => <div key={index} className="cat action">
-                                    <label>
+                                    <label key={index} className={items.title === (uniqCut.filter((e) => e.includes(items.title)))[0] ? "bg" : ""}>
                                         <input
                                             type="checkbox"
                                             value={items.title}
@@ -881,7 +961,7 @@ const Form = (props) => {
                             <div className="container">
                                 <h5 className='p-2'>Location</h5>
                                 {DiamondLocation.map((items, index) => <div key={index} className="cat action">
-                                    <label>
+                                    <label key={index} className={items.name === (uniqLocation.filter((e) => e.includes(items.name)))[0] ? "bg" : ""}>
                                         <input
                                             type="checkbox"
                                             value={items.name}
@@ -900,7 +980,7 @@ const Form = (props) => {
                             <div className="container">
                                 <h5 className='p-2'>Lab</h5>
                                 {DiamondLab.map((items, index) => <div key={index} className="cat action">
-                                    <label>
+                                    <label key={index} className={items.name === (uniqLab.filter((e) => e.includes(items.name)))[0] ? "bg" : ""}>
                                         <input
                                             type="checkbox"
                                             value={items.name}
@@ -917,7 +997,7 @@ const Form = (props) => {
                             <div className="container">
                                 <h5 className='p-2'>Polish</h5>
                                 {DiamondPolish.map((items, index) => <div key={index} className="cat action">
-                                    <label>
+                                    <label key={index} className={items.title === (uniqPolish.filter((e) => e.includes(items.title)))[0] ? "bg" : ""}>
                                         <input
                                             type="checkbox"
                                             value={items.title}
@@ -933,7 +1013,7 @@ const Form = (props) => {
                             <div className="container">
                                 <h5 className='p-2'>Fluoresence</h5>
                                 {DiamondFluorescence.map((items, index) => <div key={index} className="cat action">
-                                    <label>
+                                    <label key={index} className={items.title === (uniqFluroscence.filter((e) => e.includes(items.title)))[0] ? "bg" : ""}>
                                         <input
                                             type="checkbox"
                                             value={items.title}

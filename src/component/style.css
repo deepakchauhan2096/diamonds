@@ -112,7 +112,7 @@ h5 {
 
 
 .action input:checked+span {
-  background-color: #0dcaf080;
+  background-color: #0dcaf090;
 }
 
 
@@ -176,7 +176,8 @@ h5 {
 
 
 .bg{
-  background-color:darkgreen;
+  background-color:rgb(15, 236, 15);
+  color: white !important;
 }
 
 .sub-nav-text{
@@ -191,4 +192,19 @@ h5 {
 .container-form{
   height: 100vh;
   border:1px solid red;
+}
+
+
+.inputcarat{
+  line-height: 3.0em;
+  width: 8.0em;
+  height: 3.0em;
+  outline: none;
+  border: none;
+  border: 1px solid whitesmoke;
+  background-color: whitesmoke;
+}
+
+.inputcarat:focus{
+  background-color: white;
 }
