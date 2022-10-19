@@ -200,11 +200,31 @@ h5 {
   width: 8.0em;
   height: 3.0em;
   outline: none;
-  border: none;
   border: 1px solid whitesmoke;
   background-color: whitesmoke;
+  text-align: center;
+  font-weight: 600;
+  font-size: 12px;
+}
+.inputcarat:hover{
+background-color:rgb(181, 181, 181);
+
+}
+input:hover::placeholder {
+  color: white;
 }
 
 .inputcarat:focus{
   background-color: white;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

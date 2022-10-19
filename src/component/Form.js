@@ -397,7 +397,10 @@ const DiamondFluorescence = [
 
 const Form = (props) => {
     const [shape, setShape] = useState([])
-    const [carat, setCarat] = useState([])
+    const [carat, setCarat] = useState({
+        value:"",
+        reason:""
+    })
     const [color, setColor] = useState([])
     const [clearity, setClearity] = useState([])
     const [sym, setSym] = useState([])
@@ -410,6 +413,7 @@ const Form = (props) => {
     const [brands, setBrands] = useState([])
     const { data, setData } = useContext(dataContext)
     const { datan, setDatan } = useContext(dataContext)
+   
     // const {form, setForm } = useContext(dataContext)
     const { showHide } = props;
 
@@ -428,8 +432,10 @@ const Form = (props) => {
     }
 
     function HandleCarat(e) {
-        const carat = e.target.value;
-        setCarat(carat);
+     
+            const carat = e.target.value;
+        
+        setCarat({value:carat,reason:"radio"});
     }
 
     function HandleColor(e) {
@@ -550,43 +556,49 @@ const Form = (props) => {
         event.preventDefault();
         // console.log(shape);
         console.log(fluoresence, "carat");
-        if (carat === "0.15-0.22") {
+
+        console.log("carat value : ",carat)
+
+        if(carat.reason=="valuefrominput"){
+            min=carat.value
+            max=carat.value
+        }else if (carat.value === "0.15-0.22") {
             min = 0.15;
             max = 0.22;
-        } else if (carat === "0.23-0.29") {
+        } else if (carat.value === "0.23-0.29") {
             min = 0.23;
             max = 0.29;
-        } else if (carat === "0.30-0.39") {
+        } else if (carat.value === "0.30-0.39") {
             min = 0.30;
             max = 0.39;
-        } else if (carat === "0.40-0.49") {
+        } else if (carat.value === "0.40-0.49") {
             min = 0.40;
             max = 0.49;
-        } else if (carat === "0.50-0.69") {
+        } else if (carat.value === "0.50-0.69") {
             min = 0.50;
             max = 0.69;
-        } else if (carat === "0.70-0.89") {
+        } else if (carat.value === "0.70-0.89") {
             min = 0.70;
             max = 0.89;
-        } else if (carat === "0.90-0.99") {
+        } else if (carat.value === "0.90-0.99") {
             min = 0.90;
             max = 0.99;
-        } else if (carat === "1.00-1.49") {
+        } else if (carat.value === "1.00-1.49") {
             min = 1.00;
             max = 1.49;
-        } else if (carat === "1.50-1.99") {
+        } else if (carat.value === "1.50-1.99") {
             min = 1.50;
             max = 1.99;
-        } else if (carat === "2.00-2.99") {
+        } else if (carat.value === "2.00-2.99") {
             min = 2.00;
             max = 2.99;
-        } else if (carat === "3.00-3.99") {
+        } else if (carat.value === "3.00-3.99") {
             min = 3.00;
             max = 3.99;
-        } else if (carat === "4.00-4.99") {
+        } else if (carat.value === "4.00-4.99") {
             min = 4.00;
             max = 4.99;
-        } else if (carat === "5.00-9.99") {
+        } else if (carat.value === "5.00-9.99") {
             min = 5.00;
             max = 9.99;
         } else {
@@ -851,12 +863,16 @@ const Form = (props) => {
                                 
                                     <input
                                         type="number"
-                                        value="number"
+                                        placeholder="Type Range"
                                         name="carat"
                                         className="inputcarat"
-                                        // onChange={(e) => HandleCarat(e)}
+                                        value={carat.value}
+                                        onChange={(e) => {
+                                            console.log("value : ",e.target.value)
+                                            setCarat({value:e.target.value,reason:"valuefrominput"})
+                                 
+                                        }}
                                     />
-                                    {/* <span></span> */}
                               
                             </div>
                         </div>
