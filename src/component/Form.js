@@ -863,7 +863,7 @@ const Form = (props) => {
                                 
                                     <input
                                         type="number"
-                                        placeholder="Type Range"
+                                        placeholder="Type Range...."
                                         name="carat"
                                         className="inputcarat"
                                         value={carat.value}

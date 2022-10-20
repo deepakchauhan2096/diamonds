@@ -151,7 +151,7 @@ app.post("/nivoda", cors(), (req, res) => {
     console.log(
       data, "data"
     )
-    pool.query('SELECT * FROM doc_new').then((data_doc) => {
+    pool.query('SELECT * FROM nivoda').then((data_doc) => {
 
       //.......... Shape 
       let fitlerByShape = data_doc.rows.filter((e) => data.shape.includes(e.shape))
