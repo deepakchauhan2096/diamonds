@@ -7,7 +7,7 @@ import Nivoda from './Nivoda';
 
 const Home = () => {
     const [slide, setslide] = React.useState(1);
-    const [name, setName] = React.useState('DIAMOND');
+    const [name, setName] = React.useState('DOC');
     const [showhide, setshowHide] = React.useState('block');
 
     const compare = <>
@@ -30,14 +30,14 @@ const Home = () => {
         if (index) {
             setslide(index)
             if (index === 1) {
-                setName('DIAMONDS')
+                setName('DOC')
             }
             else if (index === 2) {
                 setName('NIVODA')
             }
             else if (index === 3) {
                 setshowHide("none")
-                setName('NIVODA ⊷ DIAMONDs')
+                setName('NIVODA ⊷ DOC')
             }
         }
     }
@@ -50,7 +50,7 @@ const Home = () => {
                 <a className="navbar-brand px-3 text-white">{name}</a>
                 <div>
                     <button className={slide === 3 ? "btn btn-light mx-2 bg-white" : "btn btn-outline-light mx-2"} onClick={(e) => handleSlide(e, 3)} title="compare">||</button>
-                    <button className={slide === 1 ? "btn btn-light mx-2 bg-white" : "btn btn-outline-light mx-2"} onClick={(e) => handleSlide(e, 1)}>DIAMOND</button>
+                    <button className={slide === 1 ? "btn btn-light mx-2 bg-white" : "btn btn-outline-light mx-2"} onClick={(e) => handleSlide(e, 1)}>DOC</button>
                     <button className={slide === 2 ? "btn btn-light mx-2 bg-white" : "btn btn-outline-light mx-2"} onClick={(e) => handleSlide(e, 2)}>NIVODA</button>
                     {/* <button className="btn btn-outline-light mx-2" onClick={() => setslide(e => !e)}>NIVODA</button> */}
 

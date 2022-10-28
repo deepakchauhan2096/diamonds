@@ -23,7 +23,7 @@ const Doc = (props) => {
                     {/* <Menu /> */}
                     {data ? <>
                         <div className="d-flex flex-row justify-content-between bg-secondary text-white p-2 text-center">
-                            <div className="sub-nav-text">DIAMONDS</div>
+                            <div className="sub-nav-text">DOC</div>
                             <div>Rows : {data.data.length} | <CSVLink className="sub-nav-text" {...csvReport}>↓ Export to CSV</CSVLink></div>
                         </div>
 
