@@ -300,8 +300,7 @@ const DiamondLocation = [
     },
     {
         name: "UAE"
-    }
-    ,
+    },
     {
         name: "BELGIUM"
     },
@@ -416,8 +415,6 @@ const Form = (props) => {
    
     // const {form, setForm } = useContext(dataContext)
     const { showHide } = props;
-
-
     let min;
     let max;
     function HandleShape(e) {
@@ -432,9 +429,7 @@ const Form = (props) => {
     }
 
     function HandleCarat(e) {
-     
             const carat = e.target.value;
-        
         setCarat({value:carat,reason:"radio"});
     }
 
@@ -458,9 +453,7 @@ const Form = (props) => {
             const index = clearity.indexOf(e.target.value);
             clearity.splice(index, 1);
             setClearity(clearity);
-
         }
-
     }
 
     function HandleSym(e) {
@@ -506,7 +499,6 @@ const Form = (props) => {
             setLocation(location);
         }
     }
-
 
     function HandleLab(e) {
         const isChecked = e.target.checked;
@@ -560,8 +552,7 @@ const Form = (props) => {
         event.preventDefault();
         // console.log(shape);
         console.log(fluoresence, "carat");
-
-        console.log("carat value : ",carat)
+        console.log("carat value : ",carat);
 
         if(carat.reason=="valuefrominput"){
             min=carat.value
@@ -609,19 +600,12 @@ const Form = (props) => {
             min = 10;
             max = 100;
         }
-
         // navigation("/table" ,{data} )
-
         console.log(min, "min")
         console.log(max, "max")
         to_index(min, max)
         to_index_nivoda(min, max)
-
     }
-
-
-
-
     const to_index = async (min, max) => {
         const config = {
             method: "POST",
@@ -643,13 +627,10 @@ const Form = (props) => {
                 max
             })
         }
-
         try {
-
             console.log("upload started");
             // await axios.post('http://3.11.192.143:4000/selected', {
             await axios.post('http://localhost:4000/selected', {
-
                 shape,
                 carat,
                 color,
@@ -673,15 +654,10 @@ const Form = (props) => {
             }).catch((err) => {
 
                 console.log("Error", err);
-
             })
-
-
         } catch (err) {
             alert("some error occured")
         }
-
-
     }
 
     const to_index_nivoda = async (min, max) => {
@@ -795,7 +771,6 @@ const Form = (props) => {
     });
     console.log(uniqLocation, "not select notSelectLocation");
 
-
     //Lab
     const notSelectLab = data?.data.map((e) => e.lab)
     const DuplicateLab = [...new Set(notSelectLab)];
@@ -818,6 +793,7 @@ const Form = (props) => {
     const uniqFluroscence = DuplicateFluroscence.filter(element => {
         return element !== null;
     });
+
     console.log(uniqFluroscence, "not select notSelectFluroscence");
 
     //    const myval =  (uniq.filter((e) => e.includes('PRINCESS')))[0]
@@ -831,12 +807,10 @@ const Form = (props) => {
                     <div className="row">
                         <div className="container" >
                             <h5 className='p-2'>Shape</h5>
-
                             {DiamondShape.map((items, index) => <div key={index} className="cat action">
                                 <label key={index} className={items.name === (uniq.filter((e) => e.includes(items.name)))[0] ? "bg" : ""} >
                                     <input
                                         // required
-
                                         type="checkbox"
                                         value={items.name}
                                         name="shape"
@@ -1047,8 +1021,8 @@ const Form = (props) => {
                         </div>
                     </div>
                     <button className="btn btn-secondary my-4 m-2 px-5">Submit </button>
-                    <button className="btn btn-secondary my-4 px-5 m-5" onClick={refreshPage}>Reset</button>
-                    {/* <button type="reset" className="btn btn-secondary my-4 px-5 m-5">Reset <span>↺</span> </button> */}
+                    {/* <button className="btn btn-secondary my-4 px-5 m-5" >Reset</button> */}
+                    <button type="reset" className="btn btn-info text-light my-4 px-5 m-5" onClick={refreshPage}>Reset <span>↺</span> </button>
 
                 </form>
             </div>
