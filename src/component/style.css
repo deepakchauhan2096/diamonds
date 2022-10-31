@@ -168,6 +168,10 @@ h5 {
   transform: translate(-50%,-50%);
   font-size: 14px;
 }
+.Notfound{
+ color: red;
+ /* font-size: rem; */
+}
 
 .slider-content{
   display: flex;

@@ -15,6 +15,8 @@ const Doc = (props) => {
         filename: 'Doc.csv'
     };
 
+    console.log(data,"newonedata")
+
     return (
         <>
             {/* <Navbar /> */}
@@ -26,7 +28,7 @@ const Doc = (props) => {
                             <div className="sub-nav-text">DOC</div>
                             <div>Rows : {data.data.length} | <CSVLink className="sub-nav-text" {...csvReport}>↓ Export to CSV</CSVLink></div>
                         </div>
-
+                        {data.data.length != 0 ? 
                         <table className="table">
                             <thead className="thead-dark">
                                 <tr>
@@ -62,7 +64,7 @@ const Doc = (props) => {
                                     </tr>))}
 
                             </tbody>
-                        </table> </> : <p className="dashboard">Please select given choices to show results</p>}
+                        </table> :<p className="dashboard Notfound">NO DATA FOUND</p>}</> : <p className="dashboard">Please select given choices to show results</p>}
                 </section>
             </div>
         </>

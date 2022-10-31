@@ -1022,7 +1022,7 @@ const Form = (props) => {
                     </div>
                     <button className="btn btn-secondary my-4 m-2 px-5">Submit </button>
                     {/* <button className="btn btn-secondary my-4 px-5 m-5" >Reset</button> */}
-                    <button type="reset" className="btn btn-info text-light my-4 px-5 m-5" onClick={refreshPage}>Reset <span>↺</span> </button>
+                    <button type="reset" className="btn btn-secondary text-light my-4 px-5 m-5" onClick={refreshPage}>Reset <span>↺</span> </button>
 
                 </form>
             </div>
