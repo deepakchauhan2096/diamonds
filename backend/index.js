@@ -189,6 +189,11 @@ app.post("/nivoda", cors(), (req, res) => {
         fitlerByCarat = fitlerByShape;
       }
 
+
+
+
+      
+
       // ......filterby Color
 
       let fitlerByColor = fitlerByCarat.filter((e) => data.color.includes(e.color))
