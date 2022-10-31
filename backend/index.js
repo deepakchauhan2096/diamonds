@@ -18,8 +18,11 @@ app.post("/selected", cors(), (req, res) => {
     let data = req.body;
     let mindata = data.min;
     let maxdata = data.max;
+
     console.log(
-      data, "data"
+      data, "data",
+      mindata, "minData",
+      maxdata, "MaxData"
     )
     pool.query('SELECT * FROM doc_new').then((data_doc) => {
 
@@ -37,76 +40,90 @@ app.post("/selected", cors(), (req, res) => {
       console.log(filtered, "filtered")
 
       let fitlerByCarat = fitlerByShape.filter((e) => filtered.includes(e.carat))
+      
+      console.log(fitlerByCarat.length, "carat")
 
-      if (fitlerByCarat.length == 0) {
-        fitlerByCarat = fitlerByShape;
+      if (fitlerByCarat.length !== 0 || mindata == 10 || maxdata == 100) {
+
+
+        console.log(fitlerByCarat.length, "first")
+        if (fitlerByCarat.length == 0) {
+          fitlerByCarat = fitlerByShape;
+
+        }
+
+        console.log(fitlerByCarat.length, "final")
+
+        // ......filterby Color
+
+        let fitlerByColor = fitlerByCarat.filter((e) => data.color.includes(e.color))
+
+        if (fitlerByColor.length == 0) {
+          fitlerByColor = fitlerByCarat;
+
+        }
+
+        // ......filterby clearity
+
+        let fitlerByClearity = fitlerByColor.filter((e) => data.clearity.includes(e.clarity))
+
+        if (fitlerByClearity.length == 0) {
+          fitlerByClearity = fitlerByColor;
+        }
+
+        // ......filterby symmetry
+
+        let filterBySymmetry = fitlerByClearity.filter((e) => data.sym.includes(e.sym));
+
+        if (filterBySymmetry.length == 0) {
+          filterBySymmetry = fitlerByClearity;
+        }
+
+        // ......filterby Cut
+        let filterByCut = filterBySymmetry.filter((e) => data.cut.includes(e.cut));
+
+        if (filterByCut.length == 0) {
+          filterByCut = filterBySymmetry;
+        }
+        // ......filterby Location
+
+        let filterByLocation = filterByCut.filter((e) => data.location.includes(e.country));
+
+        if (filterByLocation.length == 0) {
+          filterByLocation = filterByCut;
+        }
+
+        // ......filterby Lab
+
+        let filterByLab = filterByLocation.filter((e) => data.lab.includes(e.lab));
+
+        if (filterByLab.length == 0) {
+          filterByLab = filterByLocation;
+        }
+
+        // ......filterby Polish
+
+        let filterByPolish = filterByLab.filter((e) => data.polish.includes(e.pol));
+        console.log(filterByPolish);
+
+        if (filterByPolish.length == 0) {
+          filterByPolish = filterByLab;
+        }
+
+        // ......filterby fluroscence
+
+        let filterByFlurosence = filterByPolish.filter((e) => data.fluoresence.includes(e.flo));
+        console.log(filterByFlurosence, "flow")
+        if (filterByFlurosence.length == 0) {
+          filterByFlurosence = filterByPolish;
+        }
+
+        res.send(filterByFlurosence);
       }
-
-      // ......filterby Color
-
-      let fitlerByColor = fitlerByCarat.filter((e) => data.color.includes(e.color))
-
-      if (fitlerByColor.length == 0) {
-        fitlerByColor = fitlerByCarat;
-
+      else {
+        console.log("else Block")
+        res.send(fitlerByCarat);
       }
-
-      // ......filterby clearity
-
-      let fitlerByClearity = fitlerByColor.filter((e) => data.clearity.includes(e.clarity))
-
-      if (fitlerByClearity.length == 0) {
-        fitlerByClearity = fitlerByColor;
-      }
-
-      // ......filterby symmetry
-
-      let filterBySymmetry = fitlerByClearity.filter((e) => data.sym.includes(e.sym));
-
-      if (filterBySymmetry.length == 0) {
-        filterBySymmetry = fitlerByClearity;
-      }
-
-      // ......filterby Cut
-      let filterByCut = filterBySymmetry.filter((e) => data.cut.includes(e.cut));
-
-      if (filterByCut.length == 0) {
-        filterByCut = filterBySymmetry;
-      }
-      // ......filterby Location
-
-      let filterByLocation = filterByCut.filter((e) => data.location.includes(e.country));
-
-      if (filterByLocation.length == 0) {
-        filterByLocation = filterByCut;
-      }
-
-      // ......filterby Lab
-
-      let filterByLab = filterByLocation.filter((e) => data.lab.includes(e.lab));
-
-      if (filterByLab.length == 0) {
-        filterByLab = filterByLocation;
-      }
-
-      // ......filterby Polish
-
-      let filterByPolish = filterByLab.filter((e) => data.polish.includes(e.pol));
-      console.log(filterByPolish);
-
-      if (filterByPolish.length == 0) {
-        filterByPolish = filterByLab;
-      }
-
-      // ......filterby fluroscence
-
-      let filterByFlurosence = filterByPolish.filter((e) => data.fluoresence.includes(e.flo));
-      console.log(filterByFlurosence, "flow")
-      if (filterByFlurosence.length == 0) {
-        filterByFlurosence = filterByPolish;
-      }
-
-
       // ......filterby shortCut
 
       // let filtershortCut = filterByPolish.filter((e) => data.Brands.includes(e.flo));
@@ -127,7 +144,7 @@ app.post("/selected", cors(), (req, res) => {
       //   filterByFluroscence =  filterByPolish ;
       // }
 
-      res.send(filterByFlurosence);
+
 
     });
 
